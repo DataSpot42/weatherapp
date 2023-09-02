@@ -2,20 +2,14 @@ import { React, useState, useEffect, useContext } from "react"
 import { WeatherInfo1, WeatherInfo2, WeatherInfo3, WeatherInfo4 } from "./componants/weatherText"
 import PlaceComponent from "./componants/locationsearch";
 
+
+
 const App = () => {
   
-  
-  
-  let [geo, setGeo] = useState("London");
-  const childToParent =(childData) => {
-    
-    setGeo(childData);
-    console.log(geo);
-    
-    
- } 
 
 
+  let [geo, setGeo] = useState("Initial");
+  
 
   
   console.log(geo)
@@ -33,7 +27,7 @@ const App = () => {
   
   
   
-/* const handlerLocationFind = async() => {
+const handlerLocationFind = async() => {
 
 
   console.log(town) 
@@ -46,9 +40,9 @@ const App = () => {
   console.log(data)
   setLocation(data)
   setTimeout(console.log(location),1000)
-  if (data.length == 0) {SetErrorCap(true); console.log('damn again'); setTown('London'); handleError()} else {errorthing=true}
-  setLocation(data)
-}  */
+  /* if (data.length == 0) {SetErrorCap(true); console.log('damn again'); setTown('London'); handleError()} else {errorthing=true}
+  setLocation(data) */
+} 
   
   const handlerFindWeather = async(geo) => {
   console.log(geo)
@@ -60,50 +54,88 @@ const App = () => {
   setChosenLocation(data2.name)
   setChosenWeather(data2.weather[0])
   setChosenWind(data2.wind)
-  
+  console.log(errorthing)
   console.log(data2)
   console.log(mainTemp)
-  /* handlerFindWeather(geo) */
+  handlerFindWeather(geo)
   }  
- 
-
-/* const handleSubmit = (event) => {
-    event.preventDefault();    
-    console.log(town)    
-    handlerLocationFind()   
+  const handleGeo =(newValue) => {
     
-  }; */
-  const handleSelectedlocation = (geo,e) => {
+    /* setGeo(newValue);
+    console.log(geo); */
+    
+    
+ } 
+
+const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    console.log(town)
+    
+    handlerLocationFind()
+    
+    
+  };
+  const handleSelectedlocation = (lat,lon,e) => {
     e.preventDefault();
     
-    console.log(geo)
-   
+    console.log(lat)
+    console.log(lon)
     
-    handlerFindWeather(geo)    
-  };  
+    handlerFindWeather(lat,lon)
+    
+    
+  };
 
-   /* useEffect(() => {
-    handlerFindWeather()
-  }, []) */
+
+
+
+
+  
+
+  useEffect(() => {
+    handlerLocationFind()
+  }, [])
+
+
+
   
   return (
     <div>
       
       <h1>my site again</h1>
-      <form>
-        {geo}
-         <PlaceComponent /* childToParent={childToParent} */ />
-         <button onChange = {(e) => handleSelectedlocation(geo,e.target.value)}>Get Weather here</button>
+      <div>
+         <PlaceComponent onClick = {handleGeo} />
          
-      </form>   
+      </div>  
+        
+      
+    
+    
+
+
+      
+      
+    
+    
+    
+      
+      
+      <form>
+      </form>
+
+
+
       
       <h2><WeatherInfo1 {...mainTemp}/></h2>
       <h2><WeatherInfo2 {...chosenLocation}/></h2>
       <h2><WeatherInfo3 {...chosenWeather}/></h2>
       <h2><WeatherInfo4 {...chosenWind}/></h2>
       
-    </div>    
+    </div>
+    
   )
+
 }
 
 export default App
