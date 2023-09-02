@@ -93,11 +93,11 @@ const App = () => {
   return (
     <div>
       
-      <h1>my site again</h1>
+      <h1>Weather App Finally working</h1>
       
-        {geo}
+        
          <PlaceComponent childToParent={childToParent} />
-         <button onClick = {(e) => handlerFindWeather(geo,e.target.value)}>IThis works as long as other button is present</button>
+         <button onClick = {(e) => handlerFindWeather(geo,e.target.value)}>Get Weather</button>
          
        
       

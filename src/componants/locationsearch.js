@@ -26,7 +26,7 @@ export default function PlaceComponent({childToParent}) {
             console.log(place.geometry.location.lng());
         }
 
-
+        
     };
 
     return (
@@ -44,9 +44,9 @@ export default function PlaceComponent({childToParent}) {
                 placeholder="Enter Location" />
             
         </StandaloneSearchBox>
-        <h1>data {geoData} state {geoState}</h1>
+        
         <div>
-            <button onClick = {childToParent(geoState)}>This button does nothing but site breaks if I remove it</button>
+            <h1>{childToParent(geoState)}</h1>
          
       </div>
         </div>   
