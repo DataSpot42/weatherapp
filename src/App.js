@@ -57,10 +57,10 @@ const App = () => {
   let data2 = await response2.json()
   setWeather(data2.weather)
   SetMainTemp(data2.main)
-  setChosenLocation(data2.name)
+  setChosenLocation(data2)
   setChosenWeather(data2.weather[0])
   setChosenWind(data2.wind)
-  
+  console.log(data2.main)
   console.log(data2)
   console.log(mainTemp)
   /* handlerFindWeather(geo) */

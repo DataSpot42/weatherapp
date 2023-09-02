@@ -24,7 +24,7 @@ export function WeatherInfo2(props) {
           
           <div>
               
-              <h3>Select Location: {(props.name)}</h3>
+              <h3>Selected Location: {(props.name)}</h3>
                       
           </div>
       </div>
