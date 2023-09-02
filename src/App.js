@@ -92,8 +92,8 @@ const App = () => {
       <h1>my site again</h1>
       <form>
         {geo}
-         <PlaceComponent /* childToParent={childToParent} */ />
-         <button onChange = {(e) => handleSelectedlocation(geo,e.target.value)}>Get Weather here</button>
+         <PlaceComponent childToParent={childToParent} />
+         <button onChange = {(e) => handleSelectedlocation(geo,e.target.value)}>I will cause a re-render too</button>
          
       </form>   
       

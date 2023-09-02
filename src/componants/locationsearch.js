@@ -47,7 +47,7 @@ export default function PlaceComponent({childToParent}) {
         <h1>data {geoData} state {geoState}</h1>
         <div>
             
-         <button onClick = {childToParent(geoState)}>Get Weather</button>
+         <button onClick = {childToParent(geoState)}>Don't Press me I cause a re-render</button>
       </div>
         </div>   
     );
