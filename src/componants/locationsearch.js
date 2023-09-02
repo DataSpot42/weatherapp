@@ -46,8 +46,8 @@ export default function PlaceComponent({childToParent}) {
         </StandaloneSearchBox>
         <h1>data {geoData} state {geoState}</h1>
         <div>
-            
-         <button onClick = {childToParent(geoState)}>Don't Press me I cause a re-render</button>
+            <button onClick = {childToParent(geoState)}>This button does nothing but site breaks if I remove it</button>
+         
       </div>
         </div>   
     );

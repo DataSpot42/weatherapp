@@ -6,7 +6,7 @@ const App = () => {
   
   
   
-  let [geo, setGeo] = useState("London");
+  let [geo, setGeo] = useState("0");
   const childToParent =(childData) => {
     
     setGeo(childData);
@@ -18,7 +18,7 @@ const App = () => {
 
 
   
-  console.log(geo)
+  
   const defaulttown = 'London'
   
   const [location,setLocation] = useState([])
@@ -83,19 +83,23 @@ const App = () => {
   };  
 
    /* useEffect(() => {
-    handlerFindWeather()
-  }, []) */
-  
+    handlerFindWeather(geo)
+  }, [])
+   */
+  console.log(geo)
+  /* if (geo.length > 0) {console.log(`why??`); (e)=>handleSelectedlocation(geo,e.target.value)} */
+
+
   return (
     <div>
       
       <h1>my site again</h1>
-      <form>
+      
         {geo}
          <PlaceComponent childToParent={childToParent} />
-         <button onChange = {(e) => handleSelectedlocation(geo,e.target.value)}>I will cause a re-render too</button>
+         <button onClick = {(e) => handlerFindWeather(geo,e.target.value)}>IThis works as long as other button is present</button>
          
-      </form>   
+       
       
       <h2><WeatherInfo1 {...mainTemp}/></h2>
       <h2><WeatherInfo2 {...chosenLocation}/></h2>
