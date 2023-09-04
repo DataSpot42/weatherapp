@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { StandaloneSearchBox, useJsApiLoader } from "@react-google-maps/api";
-import { ThingsProvider } from './thingsContext'
 
+import '../componants/css/weather.css'
 
 const libraries = ['places'];
 export default function PlaceComponent({childToParent}) {
@@ -32,16 +32,29 @@ export default function PlaceComponent({childToParent}) {
     return (
         isLoaded
         &&
-        <div>
+        <div class="textbox">
         <StandaloneSearchBox
             
             onLoad={ref => inputRef.current = ref}
             onPlacesChanged={handlePlaceChanged}
         >
             <input
+                style={{
+                    boxSizing: `border-box`,
+                    border: `1px solid transparent`,
+                    width: `240px`,
+                    height: `32px`,
+                    padding: `0 12px`,
+                    borderRadius: `3px`,
+                    boxShadow: `5 5px 6px rgba(0, 0, 0, 0.3)`,
+                    fontSize: `18px`,
+                    outline: `none`,
+                    textOverflow: `ellipses`,
+                  }}
+
                 type="text"
                 className="form-control"
-                placeholder="Enter Location" />
+                placeholder="Enter Location" E/>
             
         </StandaloneSearchBox>
         

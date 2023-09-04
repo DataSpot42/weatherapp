@@ -1,14 +1,18 @@
-import { React, useState, useEffect, useContext } from "react"
+import { React, useState, useEffect, useContext, useRef } from "react"
+
 import { WeatherInfo1, WeatherInfo2, WeatherInfo3, WeatherInfo4 } from "./componants/weatherText"
 import PlaceComponent from "./componants/locationsearch";
-
+import { fadeIn } from "react-animations";
+import { StyleSheet, css } from 'aphrodite';
+import './App.css'
+let isLoading=false  
 const App = () => {
   
   
   
   let [geo, setGeo] = useState("0");
   const childToParent =(childData) => {
-    
+  
     setGeo(childData);
     console.log(geo);
     
@@ -28,8 +32,7 @@ const App = () => {
   const [chosenWeather,setChosenWeather] = useState('')
   const [chosenWind,setChosenWind] = useState('')
   const [chosenLocation,setChosenLocation] = useState('')
-  const [errorThrow,setErrowThrow] = useState(null)
-  console.log(location)
+ 
   
   
   
@@ -63,6 +66,7 @@ const App = () => {
   console.log(data2.main)
   console.log(data2)
   console.log(mainTemp)
+  isLoading=true
   /* handlerFindWeather(geo) */
   }  
  
@@ -91,20 +95,21 @@ const App = () => {
 
 
   return (
-    <div>
+    <div class = "whole">
       
-      <h1>Weather App Finally working</h1>
+      <h1>Steve's Weather App</h1>
       
         
          <PlaceComponent childToParent={childToParent} />
-         <button onClick = {(e) => handlerFindWeather(geo,e.target.value)}>Get Weather</button>
-         
-       
-      
-      <h2><WeatherInfo1 {...mainTemp}/></h2>
-      <h2><WeatherInfo2 {...chosenLocation}/></h2>
-      <h2><WeatherInfo3 {...chosenWeather}/></h2>
-      <h2><WeatherInfo4 {...chosenWind}/></h2>
+         <button class="getButton" onClick = {(e) => handlerFindWeather(geo,e.target.value)}>Get Weather</button>
+       {isLoading ?  
+       <div className="weatherBlock"> 
+       <h2><WeatherInfo1 {...mainTemp}/></h2>        
+      <h2><WeatherInfo3 {...chosenWeather}/></h2>      
+      <h2><WeatherInfo4 {...chosenWind}/></h2>  
+      <h2></h2>
+      <h2><WeatherInfo2 {...chosenLocation}{...isLoading}/></h2></div>
+      :<h2>Awaiting Input</h2>}
       
     </div>    
   )

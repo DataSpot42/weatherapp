@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
+import WeatherIcon from 'react-icons-weather';
+import '../App.css'
 export function WeatherInfo1(props) {
     console.log(props)
     return (
@@ -24,8 +26,10 @@ export function WeatherInfo2(props) {
           
           <div>
               
-              <h3>Selected Location: {(props.name)}</h3>
-                      
+              <h3>{(props.name)}</h3>
+              
+
+
           </div>
       </div>
   )
@@ -33,6 +37,8 @@ export function WeatherInfo2(props) {
 }
 export function WeatherInfo3(props) {
   console.log(props)
+  let icon = `http://openweathermap.org/img/w/${props.icon}.png`
+  console.log(icon)
   return (
       <div>
           
@@ -40,6 +46,7 @@ export function WeatherInfo3(props) {
               
               <h3>Weather: {(props.main)}</h3>
               <h3>Weather Detail: {(props.description)}</h3>
+              <img src={icon} alt="Weather Icon" />
                          
           </div>
       </div>
