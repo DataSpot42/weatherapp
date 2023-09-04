@@ -14,8 +14,8 @@
 }
 
 
-.getButton {
-  background-color: aquamarine;
+.button {
+  background-color: rgb(131, 195, 251);
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 100%;
   width: 15%;
@@ -25,6 +25,20 @@
   margin: .5%;
 
 }
+.button:hover, .button:focus {
+      
+  transform: translateY(1px);
+  background-color:rgb(210, 254, 238);
+  box-shadow: 15px 15px 15px rgb(131, 195, 251);
+}
+
+  button::after {    
+   
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+  }
 
 .weatherBlock {
 
@@ -32,9 +46,11 @@
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
+  line-height: 80%;
+  max-height: 400px;
 
   font-size: 1vh;
-  height: 40%;
+  height: 100%;
   padding: 15px;
   margin: 15px;
   background: rgba(255, 255, 255, 0.21);
@@ -54,17 +70,7 @@
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.angry-grid {
-  display: grid; 
 
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  
-  gap: 0px;
-  height: 100%;
-
-  
-}
  
 
 
