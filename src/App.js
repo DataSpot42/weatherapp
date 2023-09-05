@@ -1,5 +1,5 @@
 import { React, useState, useEffect, useContext, useRef } from "react"
-import { WeatherInfo1, WeatherInfo2, WeatherInfo3, WeatherInfo4 } from "./componants/weatherText"
+import { WeatherInfo1, WeatherInfo2, WeatherInfo3, WeatherInfo4, WeatherForcast } from "./componants/weatherText"
 import PlaceComponent from "./componants/locationsearch";
 import { motion } from "framer-motion";
 
@@ -20,6 +20,7 @@ const App = () => {
   const [chosenWeather, setChosenWeather] = useState('')
   const [chosenWind, setChosenWind] = useState('')
   const [chosenLocation, setChosenLocation] = useState('')
+  const [chosenForcast, setChosenForcast] = useState([])
   const [key, setKey] = useState(0);
 
   const handlerFindWeather = async (geo) => {
@@ -27,6 +28,10 @@ const App = () => {
     const API_KEY = process.env.REACT_APP_API_KEY
     let response2 = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geo[0]}&lon=${geo[1]}&units=metric&appid=${API_KEY}`)
     let data2 = await response2.json()
+    let response3 =await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${geo[0]}&lon=${geo[1]}&units=metric&appid=${API_KEY}`) 
+    let data3 = await response3.json()
+    console.log(data3)
+    setChosenForcast(data3.list)
     setWeather(data2.weather)
     SetMainTemp(data2.main)
     setChosenLocation(data2)
@@ -51,13 +56,20 @@ const App = () => {
       <PlaceComponent childToParent={childToParent} />
       <motion.button key={key} initial={{scale:0}} animate={{scale:1}} transition={{delay:0.2}} className="button" onClick={(e) => (handlerFindWeather(geo, e.target.value))}>Get Weather</motion.button>
       {isLoading ?
-        
+       <>
         <motion.div initial={{scale: 0}} animate={{scale: 1}}className="weatherBlock">
           <h2><WeatherInfo1 {...mainTemp} /></h2>
           <h2><WeatherInfo3 {...chosenWeather} /></h2>
-          <h2><WeatherInfo4 {...chosenWind} /></h2>
-          <h2></h2>
-          <h2><WeatherInfo2 {...chosenLocation}{...isLoading} /></h2></motion.div>
+          <h2><WeatherInfo4 {...chosenWind} /></h2>          
+          <h2><WeatherInfo2 {...chosenLocation}{...isLoading} /></h2>
+          
+          
+          </motion.div>
+        <motion.div initial={{scale: 0}} animate={{scale: 1}}>
+        <h2><WeatherForcast {...chosenForcast} /></h2>
+        </motion.div>
+
+        </>  
         : <motion.h2 initial={{opacity:0}} animate={{opacity:1 }} transition={{ease: "linear", duration: .5, repeat: Infinity , repeatType: "reverse"}} h2>Awaiting Input</motion.h2>}
 
     </div>
