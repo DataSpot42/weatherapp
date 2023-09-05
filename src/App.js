@@ -20,6 +20,7 @@ const App = () => {
   const [chosenWeather, setChosenWeather] = useState('')
   const [chosenWind, setChosenWind] = useState('')
   const [chosenLocation, setChosenLocation] = useState('')
+  const [key, setKey] = useState(0);
 
   const handlerFindWeather = async (geo) => {
     console.log(geo)
@@ -46,18 +47,18 @@ const App = () => {
   console.log(geo)
   return (
     <div class="whole">
-      <h1>Steve's Weather App</h1>
+      <motion.h2 initial={{opacity:0}} animate={{opacity: 1}} h2>Weather App</motion.h2>
       <PlaceComponent childToParent={childToParent} />
-      <button className="button" onClick={(e) => handlerFindWeather(geo, e.target.value)}>Get Weather</button>
+      <motion.button key={key} initial={{scale:0}} animate={{scale:1}} transition={{delay:0.2}} className="button" onClick={(e) => (setKey((k) => k + 1), handlerFindWeather(geo, e.target.value))}>Get Weather</motion.button>
       {isLoading ?
         
-        <div className="weatherBlock">
+        <motion.div initial={{scale: 0}} animate={{scale: 1}}className="weatherBlock">
           <h2><WeatherInfo1 {...mainTemp} /></h2>
           <h2><WeatherInfo3 {...chosenWeather} /></h2>
           <h2><WeatherInfo4 {...chosenWind} /></h2>
           <h2></h2>
-          <h2><WeatherInfo2 {...chosenLocation}{...isLoading} /></h2></div>
-        : <h2>Awaiting Input</h2>}
+          <h2><WeatherInfo2 {...chosenLocation}{...isLoading} /></h2></motion.div>
+        : <motion.h2 initial={{opacity:0}} animate={{opacity:1 }} transition={{ease: "linear", duration: .5, repeat: Infinity , repeatType: "reverse"}} h2>Awaiting Input</motion.h2>}
 
     </div>
   )

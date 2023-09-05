@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { motion } from "framer-motion";
 
 
 
@@ -6,17 +7,17 @@ import '../App.css'
 export function WeatherInfo1(props) {
     console.log(props)
     return (
-        <div>
+        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.2}} >
 
             <div>
 
 
-                <h3>Max Temp: {Math.round(props.temp_max)} °C</h3>
+                <h3 >Max Temp: {Math.round(props.temp_max)} °C</h3>
                 <h3>Min Temp: {Math.round(props.temp_min)} °C</h3>
                 <h3>Feels Like: {Math.round(props.feels_like)} °C</h3>
                 <h3>Average Temp: {Math.round(props.temp)} °C</h3>
             </div>
-        </div>
+        </motion.div>
     )
 
 }
@@ -41,7 +42,7 @@ export function WeatherInfo3(props) {
     let icon = `http://openweathermap.org/img/w/${props.icon}.png`
     console.log(icon)
     return (
-        <div>
+        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.3}} >
 
             <div>
 
@@ -50,7 +51,7 @@ export function WeatherInfo3(props) {
                 <img src={icon} alt="Weather Icon" width="100" height="100"/>
 
             </div>
-        </div>
+        </motion.div>
     )
 
 }
@@ -65,7 +66,7 @@ export function WeatherInfo4(props) {
     section = section % 16;
     
     return (
-        <div>
+        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.4}} >
 
             <div>
 
@@ -73,7 +74,7 @@ export function WeatherInfo4(props) {
                 <h3>Wind Drirection: {(directions[section])}</h3>
 
             </div>
-        </div>
+        </motion.div>
     )
 
 }
