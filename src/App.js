@@ -49,7 +49,7 @@ const App = () => {
     <div class="whole">
       <motion.h2 initial={{opacity:0}} animate={{opacity: 1}} h2>Weather App</motion.h2>
       <PlaceComponent childToParent={childToParent} />
-      <motion.button key={key} initial={{scale:0}} animate={{scale:1}} transition={{delay:0.2}} className="button" onClick={(e) => (setKey((k) => k + 1), handlerFindWeather(geo, e.target.value))}>Get Weather</motion.button>
+      <motion.button key={key} initial={{scale:0}} animate={{scale:1}} transition={{delay:0.2}} className="button" onClick={(e) => (handlerFindWeather(geo, e.target.value))}>Get Weather</motion.button>
       {isLoading ?
         
         <motion.div initial={{scale: 0}} animate={{scale: 1}}className="weatherBlock">
