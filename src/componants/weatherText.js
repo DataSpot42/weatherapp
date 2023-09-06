@@ -87,36 +87,36 @@ export function WeatherForcast(props) {
         <motion.div initial={{scale:0}} animate={{scale:1}} transition={{delay:1.6}}>
 
             <div  className='weatherFBlock'> 
-                <div>
+                <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2}}>
                 <p>Date: {(props[4].dt_txt)}</p>
                 <p>Temp: {Math.round(props[4].main.temp)}°C</p>
                 <p>Weather Detail: {(props[4].weather[0].main)}</p>
                 <img src={`http://openweathermap.org/img/w/${props[4].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </div>
-                <div>
+                </motion.div>
+                 <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.2}}>
                 <p>Date: {(props[12].dt_txt)}</p>
                 <p>Temp: {Math.round(props[12].main.temp)}°C</p>
                 <p>Weather Detail: {(props[12].weather[0].main)}</p>
                 <img src={`http://openweathermap.org/img/w/${props[12].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </div>
-                <div>
+                </motion.div>
+                 <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.4}}>
                 <p>Data: {(props[20].dt_txt)}</p>
                 <p>Temp: {Math.round(props[20].main.temp)}°C</p>
                 <p>Weather Detail: {(props[20].weather[0].main)}</p>
                 <img src={`http://openweathermap.org/img/w/${props[20].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </div>
-                <div>
+                </motion.div>
+                 <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.6}}>
                 <p>Date: {(props[28].dt_txt)}</p>
                 <p>Temp: {Math.round(props[28].main.temp)}°C</p>
                 <p>Weather Detail: {(props[28].weather[0].main)}</p>
                 <img src={`http://openweathermap.org/img/w/${props[28].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </div>
-                <div>
+                </motion.div>
+                 <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.8}}>
                 <p>Date: {(props[36].dt_txt)}</p>
                 <p>Temp: {Math.round(props[36].main.temp)}°C</p>
                 <p>Weather Detail: {(props[36].weather[0].main)}</p>
                 <img src={`http://openweathermap.org/img/w/${props[36].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </div>
+                </motion.div>
 
             {/* {props.map((props) => (
                <>
