@@ -24,6 +24,7 @@ const App = () => {
   const [key, setKey] = useState(0);
 
   const handlerFindWeather = async (geo) => {
+    
     console.log(geo)
     const API_KEY = process.env.REACT_APP_API_KEY
     let response2 = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geo[0]}&lon=${geo[1]}&units=metric&appid=${API_KEY}`)
@@ -66,7 +67,7 @@ const App = () => {
           
           </motion.div>
         <motion.div initial={{scale: 0}} animate={{scale: 1}}>
-        <h2><WeatherForcast {...chosenForcast} /></h2>
+        <h2><WeatherForcast chosenForecast={chosenForcast} /></h2>
         </motion.div>
 
         </>  

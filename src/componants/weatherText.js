@@ -81,18 +81,36 @@ export function WeatherInfo4(props) {
 }
 
 export function WeatherForcast(props) {
-    console.log(props)
+    console.log(props.chosenForecast)
+    let forecast = props.chosenForecast
+/*     let forecastFiltered = [""]
+    let forecastFiltered2 = []
+    for (let j=0; j<forecast.length; j++) {
+        forecastFiltered.push(forecast[j].main)
+        forecastFiltered.push(forecast[j].dt_txt)
+        forecastFiltered.push(forecast[j].weather)
+        forecastFiltered.push(forecast[j].wind)
+        forecastFiltered[j] = [forecast[j].main, forecast[j].dt_txt, forecast[j].weather, forecast.wind[j]]
+    }
+    console.log(forecastFiltered)
+    console.log (forecast.length) */
+    let nooncast = []
+    let directionsCast = 0
+    for (let i=4; i<forecast.length; i++) {        
+        nooncast.push(forecast[i])
+        i = i+7    }
+    console.log(nooncast)
     
     return (
-        <motion.div initial={{scale:0}} animate={{scale:1}} transition={{delay:1.6}}>
+        <div>
 
-            <div  className='weatherFBlock'> 
-                <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2}}>
-                <p>Date: {(props[4].dt_txt)}</p>
-                <p>Temp: {Math.round(props[4].main.temp)}°C</p>
-                <p>Weather Detail: {(props[4].weather[0].main)}</p>
-                <img src={`http://openweathermap.org/img/w/${props[4].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </motion.div>
+            <div className='forecastContainer'> 
+               {/*  <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2}}>
+                <p>Date: {(forecast[4].dt_txt)}</p>
+                <p>Temp: {Math.round(forecast[4].main.temp)}°C</p>
+                <p>Weather Detail: {(forecast[4].weather[0].main)}</p>
+                <img src={`http://openweathermap.org/img/w/${forecast[4].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
+                </motion.d iv>
                  <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.2}}>
                 <p>Date: {(props[12].dt_txt)}</p>
                 <p>Temp: {Math.round(props[12].main.temp)}°C</p>
@@ -117,27 +135,42 @@ export function WeatherForcast(props) {
                 <p>Weather Detail: {(props[36].weather[0].main)}</p>
                 <img src={`http://openweathermap.org/img/w/${props[36].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
                 </motion.div>
+ */}
+            {nooncast.map((nooncast,index) => {
+                directionsCast = ["N","NNE","NE","ENE","E",
+                "ESE", "SE", "SSE","S",
+                "SSW","SW","WSW","W",
+                "WNW","NW","NNW" ];
+            let section = parseInt( nooncast.wind.deg/22.5 + 0.5 );
+            
+            const d = new Date();
+            const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
+            let day = d.getDay();
+            let today = week[day]
+            console.log(today)
 
-            {/* {props.map((props) => (
-               <>
-               <h3>Forecast: {(props.dt_txt)}</h3>
-                <h3>Weather Detail: {Math.round(props.main.temp)}°C</h3>
-                <h3>Weather Detail: {(props.weather[0].main)}</h3>
-                <img src={`http://openweathermap.org/img/w/${props.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </>
-            ))} */}
-
+            section = section % 16;
+                return (
+               <motion.div className='weatherFSmall' initial={{scale:0}} animate={{scale:1}} transition={{delay:(1.3+(index/2))}} key={index}>
+               <h4>{(week[day+index+1])}</h4>
+                <h4>Avg Temp: {Math.round(nooncast.main.temp)}°C</h4>
+                <h4>Weather: {nooncast.weather[0].main}</h4>
+                <img src={`http://openweathermap.org/img/w/${nooncast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
+                <h4>Wind Speed: {nooncast.wind.speed} m/s</h4>
+                <h4>Wind Direction {(directionsCast[section])}</h4>              
+                
+                </motion.div>
+            )})}
             </div>
-        </motion.div>
-    )
-
+            </div>
+        )
 }
-//{<h4>More Data: {props.data4u}</h4>}
+                {/* <img src={`http://openweathermap.org/img/w/${forecast[0].icon}.png`} alt="Weather Icon" width="50" height="50"/> */}
+               
+           
+            
+            
+       /*   */
+   
 
-//<ul>
-  //             {this.props.data4u.map( data => `<li> ${data} </li>` )}
-    //         </ul>
- //   {props.map(title => {
-   //     return <div key={title}>{title}</div>;
-     // })}
 

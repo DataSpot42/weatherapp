@@ -4,6 +4,7 @@
 
 .whole {
   display: flex;
+  background-size: cover;
   background-image: url(../src/componants/images/highsky.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -78,6 +79,26 @@
   backdrop-filter: blur(6.5px);
   -webkit-backdrop-filter: blur(6.5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.weatherFSmall {
+  font-size: 2vh;
+  height: 100%;
+  padding: 5px;
+  line-height: 0%;
+  margin: 3px;
+  background: rgba(255, 255, 255, 0.21);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+.forecastContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 
