@@ -7,33 +7,25 @@ const libraries = ['places'];
 export default function PlaceComponent({childToParent}) {
     const [geoState,setGeoState] = useState([])
     const inputRef = useRef();
-    const geoData = geoState;
-    console.log(geoData)
+    const geoData = geoState;                               //establishing required variables
+    
 
     const { isLoaded, loadError } = useJsApiLoader({
-        googleMapsApiKey: process.env.REACT_APP_API_GOOGLE_KEY,
+        googleMapsApiKey: process.env.REACT_APP_API_GOOGLE_KEY,         // API key for Google Autocompete location
         libraries
     });
 
     const handlePlaceChanged = () => {
         const [place] = inputRef.current.getPlaces();
         setGeoState([place.geometry.location.lat(),place.geometry.location.lng()])
-        console.log(place);
-        
-        if (place) {
-            console.log(place.formatted_address);
-            console.log(place.geometry.location.lat());
-            console.log(place.geometry.location.lng());
-        }
-
-        
-    };
+        console.log(place);                                         //getting longditure and latitude for chosen location
+        };
 
     return (
         isLoaded
         &&
         <div class="textbox">
-        <StandaloneSearchBox
+        <StandaloneSearchBox      //google autocomplete searchbox
             
             onLoad={ref => inputRef.current = ref}
             onPlacesChanged={handlePlaceChanged}
@@ -49,7 +41,7 @@ export default function PlaceComponent({childToParent}) {
                     boxShadow: `5 5px 6px rgba(0, 0, 0, 0.3)`,
                     fontSize: `18px`,
                     outline: `none`,
-                    textOverflow: `ellipses`,
+                    textOverflow: `ellipses`,   // syling to get a glass type effect to box
                   }}
 
                 type="text"
@@ -57,9 +49,9 @@ export default function PlaceComponent({childToParent}) {
                 placeholder="Enter Location" E/>
             
         </StandaloneSearchBox>
-        
+                                       {/*  passing location data back the the parent (App) componant */}
         <div>
-            <h1>{childToParent(geoState)}</h1>
+            <h1>{childToParent(geoState)}</h1>   
          
       </div>
         </div>   
