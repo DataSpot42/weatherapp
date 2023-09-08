@@ -12,7 +12,8 @@ const App = () => {
     console.log(geo);
   }
   const defaulttown = 'London'
-
+  
+  
   const [location, setLocation] = useState([])
   const [town, setTown] = useState('London')
   const [weather, setWeather] = useState([{ "name": "." }])
@@ -20,7 +21,7 @@ const App = () => {
   const [chosenWeather, setChosenWeather] = useState('')
   const [chosenWind, setChosenWind] = useState('')
   const [chosenLocation, setChosenLocation] = useState('')
-  const [chosenForcast, setChosenForcast] = useState([])
+  const [chosenForecast, setChosenForecast] = useState([])
   const [key, setKey] = useState(0);
 
   const handlerFindWeather = async (geo) => {
@@ -31,17 +32,23 @@ const App = () => {
     let data2 = await response2.json()
     let response3 =await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${geo[0]}&lon=${geo[1]}&units=metric&appid=${API_KEY}`) 
     let data3 = await response3.json()
+    
     console.log(data3)
-    setChosenForcast(data3.list)
+    setChosenForecast(data3)
     setWeather(data2.weather)
     SetMainTemp(data2.main)
     setChosenLocation(data2)
     setChosenWeather(data2.weather[0])
     setChosenWind(data2.wind)
+    console.log(chosenForecast)
     console.log(data2.main)
+    
+    
+    console.log(chosenForecast)
     console.log(data2)
     console.log(mainTemp)
-    isLoading = true   
+    isLoading = true
+
   }
 
   const handleSelectedlocation = (geo, e) => {
@@ -67,7 +74,7 @@ const App = () => {
           
           </motion.div>
         <motion.div initial={{scale: 0}} animate={{scale: 1}}>
-        <h2><WeatherForcast chosenForecast={chosenForcast} /></h2>
+        <h2><WeatherForcast chosenForecast={chosenForecast} /></h2>
         </motion.div>
 
         </>  

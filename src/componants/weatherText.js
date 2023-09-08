@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import '../App.css'
 
 
-import '../App.css'
+
 export function WeatherInfo1(props) {
     console.log(props)
     return (
@@ -24,6 +24,9 @@ export function WeatherInfo1(props) {
 }
 export function WeatherInfo2(props) {
     console.log(props)
+    let curTime = props.dt
+    
+    console.log(curTime)
     return (
         <div>
 
@@ -82,81 +85,56 @@ export function WeatherInfo4(props) {
 
 export function WeatherForcast(props) {
     console.log(props.chosenForecast)
-    let forecast = props.chosenForecast
-/*     let forecastFiltered = [""]
-    let forecastFiltered2 = []
-    for (let j=0; j<forecast.length; j++) {
-        forecastFiltered.push(forecast[j].main)
-        forecastFiltered.push(forecast[j].dt_txt)
-        forecastFiltered.push(forecast[j].weather)
-        forecastFiltered.push(forecast[j].wind)
-        forecastFiltered[j] = [forecast[j].main, forecast[j].dt_txt, forecast[j].weather, forecast.wind[j]]
-    }
-    console.log(forecastFiltered)
-    console.log (forecast.length) */
-    let nooncast = []
+    let forecast = props.chosenForecast.list
+    console.log(props)
+    let noonCast = []
+    let todayNoonCast = false
     let directionsCast = 0
-    for (let i=4; i<forecast.length; i++) {        
-        nooncast.push(forecast[i])
-        i = i+7    }
-    console.log(nooncast)
+    let noonfind = []
+    let timeZone = (props.chosenForecast.city.timezone/3600)*-1
+    console.log(timeZone)
+    
+    let offset = 12 + 3*Math.round(timeZone/3)
+    let offsetText = offset.toString().padStart(2, "0")
+    console.log(offsetText)
+    {for (let k=0; k<forecast.length; k++){
+        /* noonfind = forecast.clouds.dt_txt */
+        noonfind = forecast[k].dt_txt.split(" ")
+        if (noonfind[1] == `${offsetText}:00:00`) {noonCast.push(forecast[k])}
+        if (noonfind[1] == `${offsetText}:00:00` && k<5) {console.log(k); console.log(noonfind); todayNoonCast = true}
+      
+    }} 
+    console.log(noonCast)
     
     return (
         <div>
 
             <div className='forecastContainer'> 
-               {/*  <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2}}>
-                <p>Date: {(forecast[4].dt_txt)}</p>
-                <p>Temp: {Math.round(forecast[4].main.temp)}°C</p>
-                <p>Weather Detail: {(forecast[4].weather[0].main)}</p>
-                <img src={`http://openweathermap.org/img/w/${forecast[4].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </motion.d iv>
-                 <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.2}}>
-                <p>Date: {(props[12].dt_txt)}</p>
-                <p>Temp: {Math.round(props[12].main.temp)}°C</p>
-                <p>Weather Detail: {(props[12].weather[0].main)}</p>
-                <img src={`http://openweathermap.org/img/w/${props[12].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </motion.div>
-                 <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.4}}>
-                <p>Data: {(props[20].dt_txt)}</p>
-                <p>Temp: {Math.round(props[20].main.temp)}°C</p>
-                <p>Weather Detail: {(props[20].weather[0].main)}</p>
-                <img src={`http://openweathermap.org/img/w/${props[20].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </motion.div>
-                 <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.6}}>
-                <p>Date: {(props[28].dt_txt)}</p>
-                <p>Temp: {Math.round(props[28].main.temp)}°C</p>
-                <p>Weather Detail: {(props[28].weather[0].main)}</p>
-                <img src={`http://openweathermap.org/img/w/${props[28].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </motion.div>
-                 <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.8}}>
-                <p>Date: {(props[36].dt_txt)}</p>
-                <p>Temp: {Math.round(props[36].main.temp)}°C</p>
-                <p>Weather Detail: {(props[36].weather[0].main)}</p>
-                <img src={`http://openweathermap.org/img/w/${props[36].weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                </motion.div>
- */}
-            {nooncast.map((nooncast,index) => {
+                
+            {noonCast.map((noonCast,index) => {
                 directionsCast = ["N","NNE","NE","ENE","E",
                 "ESE", "SE", "SSE","S",
                 "SSW","SW","WSW","W",
                 "WNW","NW","NNW" ];
-            let section = parseInt( nooncast.wind.deg/22.5 + 0.5 );
-            
+            let section = parseInt( noonCast.wind.deg/22.5 + 0.5 );
+            section = section % 16;
             const d = new Date();
             const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
             let day = d.getDay();
             let today = week[day]
+            if (todayNoonCast==true){day--}
             console.log(today)
+            
 
-            section = section % 16;
+            
                 return (
                <motion.div className='weatherFSmall' initial={{scale:0}} animate={{scale:1}} transition={{delay:(1.3+(index/2))}} key={index}>
-               <h4>{(week[day+index+1])}</h4>
-                <h4>Avg Temp: {Math.round(nooncast.main.temp)}°C</h4>
-                <h4>Weather: {nooncast.weather[0].main}</h4>
-                <img src={`http://openweathermap.org/img/w/${nooncast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                <h4>Wind Speed: {nooncast.wind.speed} m/s</h4>
+                
+                <h4>{(week[day+index+1])}</h4>
+                <h4>Avg Temp: {Math.round(noonCast.main.temp)}°C</h4>
+                <h4>Weather: {noonCast.weather[0].main}</h4>
+                <img src={`http://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
+                <h4>Wind Speed: {noonCast.wind.speed} m/s</h4>
                 <h4>Wind Direction {(directionsCast[section])}</h4>              
                 
                 </motion.div>
@@ -165,12 +143,11 @@ export function WeatherForcast(props) {
             </div>
         )
 }
-                {/* <img src={`http://openweathermap.org/img/w/${forecast[0].icon}.png`} alt="Weather Icon" width="50" height="50"/> */}
-               
+                
            
             
             
-       /*   */
+     
    
 
 
