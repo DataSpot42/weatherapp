@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";   // animation module
-
+import { WindCalc } from "./windCalc";
 import '../App.css'
 
 
@@ -20,14 +20,27 @@ export function WeatherTemps(props) {
     )
 }
 export function WeatherLocation(props) {
-    console.log(props)
-    let curTime = props.dt
     
-    console.log(curTime)
+    const dateDate = new Date()
+    let offset = (props.dt+props.timezone)*1000
+    console.log(offset)
+    let curUTC= dateDate.toUTCString()
+    console.log(curUTC)
+    const local = new Date(offset)
+    let localUTC= local.toUTCString()
+    let localUTCtoArray =  localUTC.split(" ")
+    localUTCtoArray.pop()
+    localUTCtoArray.push("Local")
+    let localText = localUTCtoArray.join(" ") 
+
+    console.log(localText) 
+
     return (
         <div>
             <div>
                 <h3>{(props.name)}</h3>
+                
+                <h3>{(localText)}</h3>
             </div>
         </div>
     )
@@ -49,19 +62,22 @@ export function WeatherDetail(props) {
     )
 }
 export function WeatherWind(props) {
-    console.log(props)
-    let directions = ["N","NNE","NE","ENE","E",
+    console.log(props.deg)
+    /* let directions = ["N","NNE","NE","ENE","E",
 		"ESE", "SE", "SSE","S",
 		"SSW","SW","WSW","W",
 		"WNW","NW","NNW" ];
     let section = parseInt( props.deg/22.5 + 0.5 );
     section = section % 16;
-    
+     */
+    let windData = props.deg
+    let windDir = WindCalc(windData)
+    console.log(windDir)
     return (
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.4}} >
             <div>
-                <h3>Wind Speed: {(props.speed)}m/s</h3>
-                <h3>Wind Drirection: {(directions[section])}</h3>
+                <h3>Wind Speed: {(Math.round(props.speed*2.237))} mph</h3>
+                <h3>Wind Drirection: {windDir}</h3>
             </div>
         </motion.div>
     )
@@ -69,7 +85,7 @@ export function WeatherWind(props) {
 export function WeatherForcast(props) {
     console.log(props.chosenForecast)
     let forecast = props.chosenForecast.list
-    
+    console.log(props)
     let noonCast = []
     let todayNoonCast = false
     let directionsCast = 0
@@ -108,7 +124,7 @@ export function WeatherForcast(props) {
                 <h4>Avg Temp: {Math.round(noonCast.main.temp)}°C</h4>
                 <h4>Weather: {noonCast.weather[0].main}</h4>
                 <img src={`http://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                <h4>Wind Speed: {noonCast.wind.speed} m/s</h4>
+                <h4>Wind Speed: {Math.round(noonCast.wind.speed*2.37)} mph</h4>
                 <h4>Wind Direction {(directionsCast[section])}</h4>          
                 
                 </motion.div>
