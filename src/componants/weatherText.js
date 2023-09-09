@@ -1,7 +1,9 @@
-
+import { React, useState} from "react"
 import { motion } from "framer-motion";   // animation module
 import { WindCalc } from "./windCalc";
 import '../App.css'
+
+import { Weather5day } from "./fiveDay";
 
 
 
@@ -22,6 +24,7 @@ export function WeatherTemps(props) {
 export function WeatherLocation(props) {
     
     const dateDate = new Date()
+    console.log(props)
     let offset = (props.dt+props.timezone)*1000
     console.log(offset)
     let curUTC= dateDate.toUTCString()
@@ -63,13 +66,7 @@ export function WeatherDetail(props) {
 }
 export function WeatherWind(props) {
     console.log(props.deg)
-    /* let directions = ["N","NNE","NE","ENE","E",
-		"ESE", "SE", "SSE","S",
-		"SSW","SW","WSW","W",
-		"WNW","NW","NNW" ];
-    let section = parseInt( props.deg/22.5 + 0.5 );
-    section = section % 16;
-     */
+   
     let windData = props.deg
     let windDir = WindCalc(windData)
     console.log(windDir)
@@ -88,48 +85,55 @@ export function WeatherForcast(props) {
     console.log(props)
     let noonCast = []
     let todayNoonCast = false
-    let directionsCast = 0
+    const d = new Date()
+    let nowTime = d.getTime() 
+    let forcOffset = ((props.chosenForecast.city.timezone)*1000)+nowTime   //geting offset for time based on location
     let noonfind = []
-    let timeZone = (props.chosenForecast.city.timezone/3600)*-1     
+    let timeZone = (props.chosenForecast.city.timezone/3600)*-1     // adjusts filer params for local timezone
     let offset = 12 + 3*Math.round(timeZone/3)
-    let offsetText = offset.toString().padStart(2, "0")
+    let offsetText = offset.toString().padStart(2, "0")    // gets result into correct format to filter
     
-    {for (let k=0; k<forecast.length; k++){       
+    {for (let k=0; k<forecast.length; k++){             // filter to get noon (time at location) forecasts for next 4 or 5 days
         noonfind = forecast[k].dt_txt.split(" ")
         if (noonfind[1] == `${offsetText}:00:00`) {noonCast.push(forecast[k])}
         if (noonfind[1] == `${offsetText}:00:00` && k<5) {console.log(k); console.log(noonfind); todayNoonCast = true}      
     }}   
-    
+    console.log(noonCast)
     return (
         <div>
 
             <div className='forecastContainer'>                 
             {noonCast.map((noonCast,index) => {
-                directionsCast = ["N","NNE","NE","ENE","E",
-                "ESE", "SE", "SSE","S",
-                "SSW","SW","WSW","W",
-                "WNW","NW","NNW" ];
-            let section = parseInt( noonCast.wind.deg/22.5 + 0.5 );
-            section = section % 16;
-            const d = new Date();
+            
+            let windData = noonCast.wind.deg
+            let windDir = WindCalc(windData)   // calls WindCalc componant to get wind direction
+            const d = new Date(forcOffset);
+            console.log(d)
             const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
             let day = d.getDay();
-            let today = week[day]
-            if (todayNoonCast==true){day--}
+            console.log(noonCast)
+            let today = week[day]   // converts day data into weekday text
+            if (todayNoonCast==true){day--}   // if it is before noon locally then today's weather at noon will be shown
            
                 return (
-               <motion.div className='weatherFSmall' initial={{scale:0}} animate={{scale:1}} transition={{delay:(1.3+(index/2))}} key={index}>
-                
-                <h4>{(week[day+index+1])} at Noon</h4>
-                <h4>Avg Temp: {Math.round(noonCast.main.temp)}°C</h4>
-                <h4>Weather: {noonCast.weather[0].main}</h4>
-                <img src={`http://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50"/>
-                <h4>Wind Speed: {Math.round(noonCast.wind.speed*2.37)} mph</h4>
-                <h4>Wind Direction {(directionsCast[section])}</h4>          
-                
-                </motion.div>
+                   <div> 
+               <><motion.button onClick={() => Weather5day(forecast, noonCast.dt)} className='weatherFSmall' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
+
+                        <h4>{(week[day + index + 1])} at Noon</h4>
+                        <h4>Avg Temp: {Math.round(noonCast.main.temp)}°C</h4>
+                        <h4>Weather: {noonCast.weather[0].main}</h4>
+                        <img src={`http://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50" />
+                        <h4>Wind Speed: {Math.round(noonCast.wind.speed * 2.37)} mph</h4>
+                        <h4>Wind Direction {windDir}</h4>
+
+                    </motion.button></>  
+                    
+                    
+                    </div>
+
             )})}
             </div>
+            <Weather5day />
             </div>
         )
 }

@@ -2,8 +2,8 @@ import { React, useState, useEffect, useContext, useRef } from "react"
 import { WeatherLocation, WeatherTemps, WeatherDetail, WeatherWind, WeatherForcast } from "./componants/weatherText"
 import PlaceComponent from "./componants/locationsearch";
 import { motion } from "framer-motion";
-
 import './App.css'
+
 let isLoading = false   // setting to hide weather blocks until data obtained
 const App = () => {
   let [geo, setGeo] = useState("0");
@@ -62,7 +62,8 @@ const App = () => {
       <motion.button key={key} initial={{scale:0}} animate={{scale:1}} transition={{delay:0.2}} className="button" onClick={(e) => (handlerFindWeather(geo, e.target.value))}>Get Weather</motion.button>
       {isLoading ?        // conditional rendering, revealing blocks once data obtained
        <>
-        <motion.div initial={{scale: 0}} animate={{scale: 1}}className="weatherBlock">
+        <motion.div initial={{scale: 0}} animate={{scale: 1}}className="weatherBlock" >
+        
           <h2><WeatherTemps {...mainTemp} /></h2>
           <h2><WeatherDetail {...chosenWeather} /></h2>
           <h2><WeatherWind {...chosenWind} /></h2>          
