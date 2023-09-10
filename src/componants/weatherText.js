@@ -80,6 +80,14 @@ export function WeatherWind(props) {
     )
 }
 export function WeatherForcast(props) {
+    const [showFiveDay, setShowFiveDay] = useState(false)
+
+    const handlerWeather5day = (forecast,forecastStamp,e) => {
+        
+        setShowFiveDay(true)
+        Weather5day(forecast,forecastStamp)
+    }
+
     console.log(props.chosenForecast)
     let forecast = props.chosenForecast.list
     console.log(props)
@@ -98,7 +106,7 @@ export function WeatherForcast(props) {
         if (noonfind[1] == `${offsetText}:00:00`) {noonCast.push(forecast[k])}
         if (noonfind[1] == `${offsetText}:00:00` && k<5) {console.log(k); console.log(noonfind); todayNoonCast = true}      
     }}   
-    console.log(noonCast)
+    
     return (
         <div>
 
@@ -117,13 +125,13 @@ export function WeatherForcast(props) {
            
                 return (
                    <div> 
-               <><motion.button onClick={() => Weather5day(forecast, noonCast.dt)} className='weatherFSmall' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
+               <><motion.button onClick={(e) => handlerWeather5day(forecast, noonCast.dt,e.target.value)} className='weatherFSmall' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
 
                         <h4>{(week[day + index + 1])} at Noon</h4>
                         <h4>Avg Temp: {Math.round(noonCast.main.temp)}°C</h4>
                         <h4>Weather: {noonCast.weather[0].main}</h4>
                         <img src={`http://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50" />
-                        <h4>Wind Speed: {Math.round(noonCast.wind.speed * 2.37)} mph</h4>
+                        <h4>Wind Speed: {Math.round(noonCast.wind.speed * 2.37)} mph</h4>   {/* converts m/s to mph */}
                         <h4>Wind Direction {windDir}</h4>
 
                     </motion.button></>  
@@ -133,7 +141,12 @@ export function WeatherForcast(props) {
 
             )})}
             </div>
+            {showFiveDay ?
+            <div>
+                <h4>Test</h4>
             <Weather5day />
+            </div> : null}
+            
             </div>
         )
 }
