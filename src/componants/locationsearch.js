@@ -24,7 +24,7 @@ export default function PlaceComponent({childToParent}) {
     return (
         isLoaded
         &&
-        <div class="textbox">
+        <div className="textbox">
         <StandaloneSearchBox      //google autocomplete searchbox
             
             onLoad={ref => inputRef.current = ref}
@@ -46,7 +46,7 @@ export default function PlaceComponent({childToParent}) {
 
                 type="text"
                 className="form-control"
-                placeholder="Enter Location" E/>
+                placeholder="Enter Location"/>
             
         </StandaloneSearchBox>
                                        {/*  passing location data back the the parent (App) componant */}

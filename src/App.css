@@ -1,12 +1,18 @@
+iframe {
+  display: none;
+}
+
+
 .App {
   text-align: center;
+  
 }
 
 .whole {
   display: flex;
   background-size: cover;
   background-image: url(../src/componants/images/highsky.jpg);
-  
+
   background-size: 100% 100%;
   width: 100vw;
   height: 100vh;
@@ -26,20 +32,22 @@
   margin: .5%;
 
 }
-.button:hover, .button:focus {
-      
+
+.button:hover,
+.button:focus {
+
   transform: translateY(1px);
-  background-color:rgb(210, 254, 238);
+  background-color: rgb(210, 254, 238);
   box-shadow: 15px 15px 15px rgb(131, 195, 251);
 }
 
-  button::after {    
-   
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-  }
+button::after {
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
 
 .weatherBlock {
 
@@ -54,7 +62,7 @@
   height: 60%;
   padding-left: 5px;
   padding-right: 5px;
-  padding-bottom:  26px;
+  padding-bottom: 26px;
   margin: 5px;
   background: rgba(255, 255, 255, 0.21);
   border-radius: 16px;
@@ -63,7 +71,8 @@
   -webkit-backdrop-filter: blur(6.5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.imageOpac {  
+
+.imageOpac {
   opacity: 0.3
 }
 
@@ -71,9 +80,9 @@
 
 .weatherFBlock {
 
-  display: grid; 
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
-  gap: 15px 15px; 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 15px 15px;
   line-height: 80%;
   max-height: 300px;
 
@@ -88,6 +97,7 @@
   -webkit-backdrop-filter: blur(6.5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
 .weatherFSmall {
   font-size: 2vh;
   height: 100%;
@@ -102,6 +112,7 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 
 }
+
 .forecastContainer {
   display: flex;
   flex-direction: row;
@@ -121,9 +132,3 @@
   background-image: url(./componants/images/SUNNY.webp);
   opacity: 0.1
 }
-
-
- 
-
-
-
