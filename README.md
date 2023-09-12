@@ -1,3 +1,7 @@
+This app is nearing completion.  A few issues to resolve before getting it running on it's own.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
