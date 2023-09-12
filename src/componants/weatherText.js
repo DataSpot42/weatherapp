@@ -3,7 +3,7 @@ import { motion } from "framer-motion";   // animation module
 import { WindCalc } from "./windCalc";
 import '../App.css'
 
-import { Weather5day } from "./fiveDay";
+import { WeatherDayCastData } from "./dayCast";
 
 
 
@@ -80,13 +80,14 @@ export function WeatherWind(props) {
     )
 }
 export function WeatherForcast(props) {
-    const [showFiveDay, setShowFiveDay] = useState(false)
+    const [showDayCast, setShowDayCast] = useState(false)
 
-    const handlerWeather5day = (forecast, forecastStamp) => {
-        console.log(forecastStamp)
-        setShowFiveDay(false)
-        setShowFiveDay(true)
-        Weather5day(forecast, forecastStamp)
+    const handlerWeatherDayCast = (e) => {
+       /*  e.preventDefault() */
+        
+        /* setShowFiveDay(false) */
+        setShowDayCast(true)
+        /* Weather5day(forecast, forecastStamp) */
     }
 
     console.log(props.chosenForecast)
@@ -131,7 +132,7 @@ export function WeatherForcast(props) {
 
                     return (
                         <div key={index}>
-                            <><motion.button onClick={() => handlerWeather5day(forecast, noonCast.dt)} className='weatherFSmall' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
+                            <><motion.button onClick={() => handlerWeatherDayCast()} className='weatherFSmall' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
 
                                 <h4>{(week[day + index + 1])} at Noon</h4>
                                 <h4>Avg Temp: {Math.round(noonCast.main.temp)}°C</h4>
@@ -141,15 +142,12 @@ export function WeatherForcast(props) {
                                 <h4>Wind Direction {windDir}</h4>
 
                             </motion.button></>
+                            {showDayCast && <WeatherDayCastData dayCastData={forecast} forecastStamp={noonCast.dt}/>}
                         </div>
                     )
                 })}
             </div>
-            {showFiveDay ?
-                <div>
-                    <h4>Test</h4>
-                    <Weather5day />
-                </div> : null}
+           
 
         </div>
     )

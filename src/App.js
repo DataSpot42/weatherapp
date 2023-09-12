@@ -40,10 +40,10 @@ const App = () => {
     isLoading = true   //revealing weather blocks now data obtained
   }
 
-  const handleSelectedlocation = (geo, e) => {
+ /*  const handleSelectedlocation = (geo, e) => {
     e.preventDefault()
     handlerFindWeather(geo)         // stopping constant polling of data
-  };
+  }; */
   return (
     <div className="whole">
       <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} h2>Weather App</motion.h2>
