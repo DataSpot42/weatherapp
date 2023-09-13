@@ -10,8 +10,8 @@ iframe {
 
 .whole {
   display: flex;
-  background-size: cover;
-  background-image: url(../src/componants/images/highsky.jpg);
+  
+  
 
   background-size: 100% 100%;
   width: 100vw;
@@ -22,22 +22,29 @@ iframe {
 
 
 .button {
-  background-color: rgb(131, 195, 251);
+  
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 100%;
   width: 15%;
-  border-radius: 9%;
-  box-shadow: 10px 10px 30px rgb(131, 195, 251);
-  padding: .5%;
-  margin: .5%;
-
+  background: rgba(255, 255, 255, 0.21);
+  border-radius: 16px;
+  
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 5px;
+  margin: 10px;
+  box-shadow: 15px 15px 15px rgb(52, 93, 130);
 }
 
 .button:hover,
 .button:focus {
 
   transform: translateY(1px);
-  background-color: rgb(210, 254, 238);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  /* border: 1px solid rgba(255, 255, 255, 0.3); */
+  background: rgba(159, 195, 214, 0.626);
   box-shadow: 15px 15px 15px rgb(131, 195, 251);
 }
 
@@ -87,12 +94,12 @@ button::after {
   max-height: 300px;
 
   font-size: 2vh;
-  height: 100%;
+  height: 70%;
   padding: 15px;
   margin: 15px;
   background: rgba(255, 255, 255, 0.21);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6.5px);
   -webkit-backdrop-filter: blur(6.5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -117,7 +124,7 @@ button::after {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content:center;
 }
 
 

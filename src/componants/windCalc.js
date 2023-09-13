@@ -6,7 +6,7 @@ export function WindCalc(deg) {             // turning degrees from API into a d
     "WNW", "NW", "NNW"];
   let section = parseInt(deg / 22.5 + 0.5);
   section = section % 16;
-  console.log(directions[section])
+  
 
 
   return directions[section]

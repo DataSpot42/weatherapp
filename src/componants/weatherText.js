@@ -1,4 +1,4 @@
-import { React, useState } from "react"
+import { React, useState, useEffect } from "react"
 import { motion } from "framer-motion";   // animation module
 import { WindCalc } from "./windCalc";
 import '../App.css'
@@ -50,7 +50,7 @@ export function WeatherLocation(props) {
 }
 export function WeatherDetail(props) {
     console.log(props)
-    let icon = `http://openweathermap.org/img/w/${props.icon}.png`
+    let icon = `http://openweathermap.org/img/w/${props.icon}.png`   //weather icon for forecast
     console.log(icon)
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} >
@@ -68,8 +68,8 @@ export function WeatherWind(props) {
     console.log(props.deg)
 
     let windData = props.deg
-    let windDir = WindCalc(windData)
-    console.log(windDir)
+    let windDir = WindCalc(windData)  //converts degrees into direction
+
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} >
             <div>
@@ -81,10 +81,16 @@ export function WeatherWind(props) {
 }
 export function WeatherForcast(props) {
     const [showDayCast, setShowDayCast] = useState(false)
+    const [timeFlag, setTimeFlag] = useState(0)
+    const [chosenDay, setChosenDay] = useState("")
+    /* const [dayCast, setDayCast] = useState("") */
 
-    const handlerWeatherDayCast = (e) => {
-       /*  e.preventDefault() */
-        
+    const handlerWeatherDayCast = (timeStamp, dayStamp) => {
+
+        setShowDayCast(false)
+        setChosenDay(dayStamp)
+        setTimeFlag(timeStamp)
+        /* setDayCast(dayStamp) */
         /* setShowFiveDay(false) */
         setShowDayCast(true)
         /* Weather5day(forecast, forecastStamp) */
@@ -132,7 +138,7 @@ export function WeatherForcast(props) {
 
                     return (
                         <div key={index}>
-                            <><motion.button onClick={() => handlerWeatherDayCast()} className='weatherFSmall' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
+                            <><motion.button onClick={(e) => handlerWeatherDayCast(noonCast.dt, week[day + index + 1], e.target.value)} className='weatherFSmall' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
 
                                 <h4>{(week[day + index + 1])} at Noon</h4>
                                 <h4>Avg Temp: {Math.round(noonCast.main.temp)}°C</h4>
@@ -142,12 +148,14 @@ export function WeatherForcast(props) {
                                 <h4>Wind Direction {windDir}</h4>
 
                             </motion.button></>
-                            {showDayCast && <WeatherDayCastData dayCastData={forecast} forecastStamp={noonCast.dt}/>}
+
                         </div>
                     )
                 })}
-            </div>
-           
+                <h3></h3>
+                {showDayCast && <WeatherDayCastData dayCastData={forecast} forecastStamp={timeFlag} dayChosen={chosenDay}  />}
+            </div>              {/* up to 8 forecasts for the day selected */}
+
 
         </div>
     )
