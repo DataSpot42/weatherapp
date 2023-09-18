@@ -107,9 +107,12 @@ button::after {
 
 .weatherFSmall {
   font-size: 2vh;
-  height: 100%;
+  height: 95%;
   padding: 5px;
+  text-align: center;
   line-height: 0%;
+  align-items: center;
+  margin: auto;
   margin: 3px;
   background: rgba(255, 255, 255, 0.21);
   border-radius: 16px;
@@ -125,8 +128,16 @@ button::after {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content:center;
+  width: 100%;
 }
-
+.WeatherDetailedContainer
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:center;
+  width: 100%;
+}
 
 
 .wIcon {

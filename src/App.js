@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react"
+import { React, useState} from "react"
 import { WeatherLocation, WeatherTemps, WeatherDetail, WeatherWind, WeatherForcast } from "./componants/weatherText"
 import PlaceComponent from "./componants/locationsearch";
 import { motion } from "framer-motion";
@@ -18,7 +18,7 @@ const App = () => {
   const [chosenWind, setChosenWind] = useState('')
   const [chosenLocation, setChosenLocation] = useState('')
   const [chosenForecast, setChosenForecast] = useState([])      // setting required varibles
-  const [key, setKey] = useState(0);
+  /* const [key, setKey] = useState(0); */
 
   const handlerFindWeather = async (geo) => {   // taking location data to get weather report
 
@@ -48,7 +48,7 @@ const App = () => {
     <div className="whole">
       <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} h2>Weather App</motion.h2>
       <PlaceComponent childToParent={childToParent} />     {/* box and button to get location */}
-      <motion.button key={key} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }}
+      <motion.button /* key={key} */ initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }}
         className="button" onClick={(e) => (handlerFindWeather(geo, e.target.value))}>Get Weather</motion.button>
       {isLoading ?        // conditional rendering, revealing blocks once data obtained
         <>

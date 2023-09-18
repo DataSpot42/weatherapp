@@ -4,13 +4,14 @@ import { StandaloneSearchBox, useJsApiLoader } from "@react-google-maps/api";
 import '../componants/css/weather.css'
 
 const libraries = ['places'];
+// eslint-disable-next-line react/prop-types
 export default function PlaceComponent({childToParent}) {
     const [geoState,setGeoState] = useState([])
     const inputRef = useRef();
-    const geoData = geoState;                               //establishing required variables
+   /*  const geoData = geoState;   */                             //establishing required variables
     
 
-    const { isLoaded, loadError } = useJsApiLoader({
+    const { isLoaded, /* loadError */ } = useJsApiLoader({
         googleMapsApiKey: process.env.REACT_APP_API_GOOGLE_KEY,         // API key for Google Autocompete location
         libraries
     });
