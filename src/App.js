@@ -19,7 +19,8 @@ const App = () => {
   const [chosenLocation, setChosenLocation] = useState('')
   const [chosenForecast, setChosenForecast] = useState([])      // setting required varibles
   /* const [key, setKey] = useState(0); */
-
+  let ffs=weather
+  console.log(ffs)
   const handlerFindWeather = async (geo) => {   // taking location data to get weather report
 
     console.log(geo)
