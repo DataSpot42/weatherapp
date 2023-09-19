@@ -181,7 +181,7 @@ export function WeatherForcast(props) {
                                 <img src={`http://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50" />
                                 <h5>Wind Speed: {Math.round(noonCast.wind.speed * 2.37)} mph</h5>   {/* converts m/s to mph */}
                                 <h5>Wind Direction {windDir}</h5>
-                                <h6>Click here to get day forecast</h6>
+                                <h6>Press tile to get day forcast</h6>
 
                             </motion.button></>
 
