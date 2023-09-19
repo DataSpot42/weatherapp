@@ -25,7 +25,8 @@ iframe {
   
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 100%;
-  width: 15%;
+  width: 20%;
+  min-width: 200px;
   background: rgba(255, 255, 255, 0.21);
   border-radius: 16px;
   
@@ -149,4 +150,15 @@ button::after {
 .sunny {
   background-image: url(./componants/images/SUNNY.webp);
   opacity: 0.1
+}
+
+@media screen and (max-width: 900px) {
+  .cards-grid-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(10, 1fr);
+      grid-column-gap: 5px;
+      grid-row-gap: 5px;
+      max-width: 95%;
+  }
 }
