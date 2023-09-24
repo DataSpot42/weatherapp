@@ -153,15 +153,13 @@ button::after {
   .weatherNow {
     font-size: 100%;
   }
-  .forecastContainer{
-    width: 100%;
+  
   }
   .weatherFSmall {
     display: grid;
-    font-size: 10px;
+    font-size: 10%;
     line-height: 0px;
-    height: 100%;
-    
-    width: 80%;
+    height: 100%;    
+    width: 100%;
   }
 }
