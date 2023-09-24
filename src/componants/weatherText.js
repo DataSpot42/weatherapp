@@ -53,7 +53,7 @@ export function WeatherLocation(props) {
 {/* eslint-disable-next-line react/prop-types */}
                 <p>{(props.name)}</p>
 
-                <p>{(localText)}</p>
+                <h6>{(localText)}</h6>
             </div>
         </div>
     )
@@ -74,7 +74,7 @@ export function WeatherDetail(props) {
 {/* eslint-disable-next-line react/prop-types */}
                 <p>Weather: {(props.main)}</p>
                 {/* eslint-disable-next-line react/prop-types */}
-                <p>Weather Detail: {(props.description)}</p>
+                <p>{(props.description)}</p>
                 <img src={icon} alt="Weather Icon" width="100" height="100" />
 
             </div>
@@ -181,7 +181,7 @@ export function WeatherForcast(props) {
                                 <img src={`http://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50" />
                                 <p>Wind Speed: {Math.round(noonCast.wind.speed * 2.37)} mph</p>   {/* converts m/s to mph */}
                                 <p>Wind Direction {windDir}</p>
-                                <p>Press tile to get day forcast</p>
+                                <h6>Press tile for day's forcast</h6>
 
                             </motion.button></>
 
