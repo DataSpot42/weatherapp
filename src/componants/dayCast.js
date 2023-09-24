@@ -5,7 +5,7 @@ import { WindCalc } from "./windCalc";
 // eslint-disable-next-line react/prop-types
 export function WeatherDayCastData({dayCastData, forecastStamp, dayChosen, timeZoneData}) {
     const [dayCast, setDayCast] = useState([])
-    /* const count = useRef(0); */
+    
     const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
     let today = week[dayChosen]
     let thisdaytoday = week[dayChosen]
@@ -16,7 +16,7 @@ export function WeatherDayCastData({dayCastData, forecastStamp, dayChosen, timeZ
     let start = 0
     let noon = 0
     let startTime = 0
-    /* let middayCalc = 0 */
+    
     // eslint-disable-next-line react/prop-types
     for (let i = 0; i < dayCastData.length; i++) {
     // eslint-disable-next-line react/prop-types
@@ -49,28 +49,28 @@ export function WeatherDayCastData({dayCastData, forecastStamp, dayChosen, timeZ
                 let windDir = WindCalc(windData)   // convert degrees to direction
                 let timeFind=dayCast.dt_txt.split(" ") 
                 let timeNum=parseInt(timeFind[1])
-                let timeOffset = timeNum+(timeZoneData)                
+                let timeOffset = timeNum+(timeZoneData)    //take into account the location timezone            
                 {if (timeOffset>=24) {
                     timeOffset=timeOffset-24; 
                         if (index<5) {
                             today=yesterday}
                                 else {today=tomorrow} 
-                    } else {today=thisdaytoday} }
+                    } else {today=thisdaytoday} }    // get correct day displayed
                               
                 console.log (timeFind, timeNum, timeOffset, timeZoneData)
-                /* middayCalc=(middayCalc+startTime+3)  // setting time of forcast to display */                
+                               
                 return (
                     <div key={index}>                      
                     <motion.div className='weatherFSmall' key ={index} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (0+index/2) }} >
                       
                       
-                        <h4>{today} {timeOffset.toString().padStart(2,'0')}:00</h4> 
-                        <h5>Avg Temp: {Math.round(dayCast.main.temp)}°C</h5>
-                        <h5>Weather: {dayCast.weather[0].main}</h5>
+                        <p>{today} {timeOffset.toString().padStart(2,'0')}:00</p> 
+                        <p>Avg Temp: {Math.round(dayCast.main.temp)}°C</p>
+                        <p>Weather: {dayCast.weather[0].main}</p>
                         <img src={`http://openweathermap.org/img/w/${dayCast.weather[0].icon}.png`}
                             alt="Weather Icon" width="50" height="50" />
-                        <h5>Wind Speed: {Math.round(dayCast.wind.speed * 2.37)} mph</h5>   {/* converts m/s to mph */}
-                        <h5>Wind Direction {windDir}</h5>
+                        <p>Wind Speed: {Math.round(dayCast.wind.speed * 2.37)} mph</p>   {/* converts m/s to mph */}
+                        <p>Wind Direction {windDir}</p>
                     </motion.div>
 
                 </div>

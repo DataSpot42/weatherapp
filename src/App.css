@@ -10,7 +10,7 @@ iframe {
   display: flex;
 
   background-size: 100% 100%;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   flex-direction: column;
   align-items: center;
@@ -96,7 +96,7 @@ button::after {
 }
 
 .weatherFSmall {
-  font-size: 70%;
+  font-size: 20px;
   height: 95%;
   width: 100%;
   text-align: center;
@@ -146,19 +146,22 @@ button::after {
 }
 
 @media screen and (max-width: 900px) {
+  
   .weatherBlock {
     width: 80%;    
   }
   .weatherNow {
     font-size: 100%;
   }
-
+  .forecastContainer{
+    width: 100%;
+  }
   .weatherFSmall {
     display: grid;
     font-size: 10px;
     line-height: 0px;
     height: 100%;
     
-    width: 100%;
+    width: 80%;
   }
 }

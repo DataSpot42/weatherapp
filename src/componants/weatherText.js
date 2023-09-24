@@ -14,13 +14,13 @@ export function WeatherTemps(props) {
             <div>
                 <h2>Weather Now</h2>
                 {/* eslint-disable-next-line react/prop-types */}
-                <h3 >Max Temp: {Math.round(props.temp_max)} °C</h3>
+                <p >Max Temp: {Math.round(props.temp_max)} °C</p>
                 {/* eslint-disable-next-line react/prop-types */}
-                <h3>Min Temp: {Math.round(props.temp_min)} °C</h3>
+                <p>Min Temp: {Math.round(props.temp_min)} °C</p>
                 {/* eslint-disable-next-line react/prop-types */}
-                <h3>Feels Like: {Math.round(props.feels_like)} °C</h3>
+                <p>Feels Like: {Math.round(props.feels_like)} °C</p>
                 {/* eslint-disable-next-line react/prop-types */}
-                <h3>Average Temp: {Math.round(props.temp)} °C</h3>
+                <p>Average Temp: {Math.round(props.temp)} °C</p>
             </div>
         </motion.div>
     )
@@ -51,9 +51,9 @@ export function WeatherLocation(props) {
             <div>
                 
 {/* eslint-disable-next-line react/prop-types */}
-                <h3>{(props.name)}</h3>
+                <p>{(props.name)}</p>
 
-                <h3>{(localText)}</h3>
+                <p>{(localText)}</p>
             </div>
         </div>
     )
@@ -72,9 +72,9 @@ export function WeatherDetail(props) {
             <div>
 
 {/* eslint-disable-next-line react/prop-types */}
-                <h3>Weather: {(props.main)}</h3>
+                <p>Weather: {(props.main)}</p>
                 {/* eslint-disable-next-line react/prop-types */}
-                <h3>Weather Detail: {(props.description)}</h3>
+                <p>Weather Detail: {(props.description)}</p>
                 <img src={icon} alt="Weather Icon" width="100" height="100" />
 
             </div>
@@ -92,8 +92,8 @@ export function WeatherWind(props) {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} >
             <div>
                 {/* eslint-disable-next-line react/prop-types */}
-                <h3>Wind Speed: {(Math.round(props.speed * 2.237))} mph</h3>
-                <h3>Wind Drirection: {windDir}</h3>
+                <p>Wind Speed: {(Math.round(props.speed * 2.237))} mph</p>
+                <p>Wind Drirection: {windDir}</p>
             </div>
         </motion.div>
     )
@@ -175,13 +175,13 @@ export function WeatherForcast(props) {
                         <div key={index}>
                             <><motion.button onClick={(e) => handlerWeatherDayCast(noonCast.dt,(day + index + 1), e.target.value)} className='weatherFSmall' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
 
-                                <h4>{(week[day + index+1])}</h4>
-                                <h5>Avg Temp: {Math.round(noonCast.main.temp)}°C</h5>
-                                <h5>Weather: {noonCast.weather[0].main}</h5>
+                                <p>{(week[day + index+1])}</p>
+                                <p>Avg Temp: {Math.round(noonCast.main.temp)}°C</p>
+                                <p>Weather: {noonCast.weather[0].main}</p>
                                 <img src={`http://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50" />
-                                <h5>Wind Speed: {Math.round(noonCast.wind.speed * 2.37)} mph</h5>   {/* converts m/s to mph */}
-                                <h5>Wind Direction {windDir}</h5>
-                                <h6>Press tile to get day forcast</h6>
+                                <p>Wind Speed: {Math.round(noonCast.wind.speed * 2.37)} mph</p>   {/* converts m/s to mph */}
+                                <p>Wind Direction {windDir}</p>
+                                <p>Press tile to get day forcast</p>
 
                             </motion.button></>
 
