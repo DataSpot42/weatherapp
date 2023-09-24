@@ -21,6 +21,7 @@ const App = () => {
   /* const [key, setKey] = useState(0); */
   let ffs=weather
   console.log(ffs)
+ 
   const handlerFindWeather = async (geo) => {   // taking location data to get weather report
 
     console.log(geo)
@@ -55,10 +56,10 @@ const App = () => {
         <>
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="weatherBlock" >
 
-            <h2><WeatherTemps {...mainTemp} /></h2>
-            <h2><WeatherDetail {...chosenWeather} /></h2>
-            <h2><WeatherWind {...chosenWind} /></h2>
-            <h2><WeatherLocation {...chosenLocation}{...isLoading} /></h2>    {/* current weather */}
+            <p className="weatherNow"><WeatherTemps {...mainTemp} /></p>
+            <p className="weatherNow"><WeatherDetail {...chosenWeather} /></p>
+            <p className="weatherNow"><WeatherWind {...chosenWind} /></p>
+            <p className="weatherNow"><WeatherLocation {...chosenLocation}{...isLoading} /></p>    {/* current weather */}
 
 
           </motion.div>
