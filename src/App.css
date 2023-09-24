@@ -271,19 +271,55 @@ button::after {
     font-weight: bolder;
   } 
   .weatherNowWind {
-    line-height: 1em;
+    line-height: .7em;
 
   }  
 
   .weatherFSmall {
     
     display: block;
-    font-size: 70%;
+    font-size: 60%;
     line-height: 0%;
     height: 100%;    
     width: 100%;
   }
+  .centerButton {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    font-size: 20px;
+    
+  }
+  
+  
+  
+  .weatherButtons {
+    margin: auto;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 55%;
+    height: 95%;
+    width: 100%;
+    text-align: center;
+    line-height: 10%;
+    padding: 5px;
+    align-items: center;
+    margin-top: 0%;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 100%;
+    background: rgba(255, 255, 255, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  
+  }
+  
 }
+
+
+
 @media screen and (max-width: 320px) {
   .weatherFSmall {
     
