@@ -92,8 +92,8 @@ export function WeatherWind(props) {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} >
             <div>
                 {/* eslint-disable-next-line react/prop-types */}
-                <p>Wind Speed: {(Math.round(props.speed * 2.237))} mph</p>
-                <p>Direction: {windDir}</p>
+                <p className="weatherNowWind">Wind Speed: {(Math.round(props.speed * 2.237))}mph</p>
+                <p className="weatherNowWind">Wind Direction: {windDir}</p>
             </div>
         </motion.div>
     )

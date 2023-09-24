@@ -125,7 +125,7 @@ button::after {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content:space-around;
   width: 100%;
 }
 
@@ -156,22 +156,33 @@ button::after {
     width: 90%;    
   }
   .weatherNow {
-    display: block;
-    font-size: 2.2em;
+    display: block;    
+    font-size: 2.1em;
     color: #101010;
-    
-  
-    
-    
-  }
-  
-  
+    font-weight: bolder;
+  } 
+  .weatherNowWind {
+    line-height: 1em;
+
+  }  
+
   .weatherFSmall {
     
     display: block;
-    font-size: 75%;
+    font-size: 70%;
     line-height: 0%;
     height: 100%;    
     width: 100%;
   }
 }
+@media screen and (max-width: 320px) {
+  .weatherFSmall {
+    
+    display: block;
+    font-size: 60%;
+    line-height: 0%;
+    height: 100%;    
+    width: 100%;
+  }
+}  
+  
