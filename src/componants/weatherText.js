@@ -112,6 +112,26 @@ export function WeatherForcast(props) {
         /* setDayCast(dayStamp) */
         /* setShowFiveDay(false) */
         setShowDayCast(true)
+        console.log(timeStamp,dayStamp)
+        /* Weather5day(forecast, forecastStamp) */
+    }
+    const handlerNext12Cast = (forecast, timeZone) => {
+        let next12 =[]
+        for (let k=0; k<4; k++) {
+            next12.push(forecast[k])
+        }
+        console.log(next12,timeZone)
+        setShowDayCast(false)
+        setChosenDay(99)
+        
+        setShowDayCast(true)
+        
+        /* setShowDayCast(false)
+        setChosenDay(0)
+        setTimeFlag(timeStamp) */
+        /* setDayCast(dayStamp) */
+        /* setShowFiveDay(false) */
+        /* setShowDayCast(true) */
         /* Weather5day(forecast, forecastStamp) */
     }
     //eslint-disable-next-line react/prop-types
@@ -155,8 +175,11 @@ export function WeatherForcast(props) {
 
 
     return (
-        <div>
-
+        <>
+            <div className="centerButton">
+            <motion.button onClick={(e) => 
+                handlerNext12Cast(forecast,timeZone, e.target.value)} className='button2' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1) }}><p>Show Weather for next 12 hours</p></motion.button>
+            </div>
             <div className='forecastContainer'>
 
                 {noonCast.map((noonCast, index) => {
@@ -173,7 +196,7 @@ export function WeatherForcast(props) {
 
                     return (
                         <div key={index}>
-                            <><motion.button onClick={(e) => handlerWeatherDayCast(noonCast.dt,(day + index + 1), e.target.value)} className='weatherFSmall' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
+                            <><motion.button onClick={(e) => handlerWeatherDayCast(noonCast.dt,(day + index + 1), e.target.value)} className='weatherButtons' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
 
                                 <p>{(week[day + index+1])}</p>
                                 <p>Avg Temp: {Math.round(noonCast.main.temp)}°C</p>
@@ -188,12 +211,14 @@ export function WeatherForcast(props) {
                         </div>
                     )
                 })}
+             </div> 
+             <div>  
                 <h3></h3>
                 {showDayCast && <WeatherDayCastData dayCastData={forecast} forecastStamp={timeFlag} dayChosen={chosenDay} timeZoneData={timeZoneOffset}  />}
             </div>              {/* up to 8 forecasts for the day selected */}
 
 
-        </div>
+        </>
     )
 }
 
