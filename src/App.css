@@ -83,7 +83,8 @@ button::after {
 }
 
 .weatherNow {
-  font-size: 14px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 220%;
   line-height: 30%;
   margin-top: 0%;
   margin-bottom: 0%;
@@ -96,7 +97,8 @@ button::after {
 }
 
 .weatherFSmall {
-  font-size: 20px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 90%;
   height: 95%;
   width: 100%;
   text-align: center;
@@ -151,13 +153,14 @@ button::after {
     width: 80%;    
   }
   .weatherNow {
-    font-size: 100%;
+    font-size: 130%;
   }
   
   
   .weatherFSmall {
+    
     display: grid;
-    font-size: 10%;
+    font-size: 35%;
     line-height: 0px;
     height: 100%;    
     width: 100%;

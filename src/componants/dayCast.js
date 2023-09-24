@@ -1,6 +1,7 @@
 import { React,useState, useEffect} from "react"
 import { motion } from "framer-motion";   // animation module
 import { WindCalc } from "./windCalc";
+import '../App.css'
 
 // eslint-disable-next-line react/prop-types
 export function WeatherDayCastData({dayCastData, forecastStamp, dayChosen, timeZoneData}) {
