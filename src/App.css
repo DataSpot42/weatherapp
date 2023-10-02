@@ -305,7 +305,7 @@ button::after {
     font-weight: bolder;
   } 
   .weatherNowWind {
-    line-height: .7em;
+    line-height: 100%;
 
   }  
 
