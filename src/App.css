@@ -15,7 +15,15 @@ iframe {
   flex-direction: column;
   align-items: center;
 }
-
+.weatherMain {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  place-items: center;
+  place-self: center;
+  width: 55%;
+  align-items: center;
+}
 
 .button {
 
@@ -56,11 +64,14 @@ button::after {
 .weatherBlock {
 
   display: grid;
+  place-self: center;
+  margin: auto;
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr 0.5fr;
   gap: 7px 9px;
-  width: 50%;
+  width: 60%;
+  
   grid-template-areas:
     ". ."
     ". .";
@@ -85,15 +96,18 @@ button::after {
 .weatherNow {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 2.5em;
-  line-height: 30%;
+  line-height: 100%;
   margin-top: 0%;
   margin-bottom: 0%;
   padding-bottom: 0%;
   padding-top: 0%;
 }
+.weatherNowWind {
+  font-size: 90%;
+}
 
 .imageOpac {
-  opacity: 0.3
+  opacity: 0.3;
 }
 .smallText {
   font-size:0.5em
@@ -147,7 +161,7 @@ button::after {
   margin: auto;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 90%;
-  width: 400px;
+  max-width: 800px;
   
   background: rgba(255, 255, 255, 0.21);
   border-radius: 16px;
@@ -194,7 +208,7 @@ button::after {
   height: 95%;
   width: 100%;
   text-align: center;
-  line-height: 10%;
+  line-height: 100%;
   padding: 5px;
   align-items: center;
   margin-top: 0%;
@@ -260,9 +274,29 @@ button::after {
 }
 
 @media screen and (max-width: 900px) {
-  
+  .whole {
+    align-items: center;
+    display: block;
+    margin: auto;
+  }
+  .findWeather {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+  }
+  .weatherMain {
+    display: block;
+    margin: auto;
+    width: 95%;
+    align-items: center;
+
+  }
+
   .weatherBlock {
-    width: 90%;    
+        
+    margin: auto;
+    font-size: 35%;
   }
   .weatherNow {
     display: block;    
@@ -277,30 +311,38 @@ button::after {
 
   .weatherFSmall {
     
-    display: block;
-    font-size: 60%;
-    line-height: 0%;
-    height: 100%;    
-    width: 100%;
+    display: block;    
+    line-height: 0%;    
+    font-size: 40%;
+    
   }
   .centerButton {
     display: flex;
     justify-content: center;
     width: 80%;
-    font-size: 20px;
+    font-size: 70%;
     
+  }
+  .centerButton {
+    display: block;
+    margin-left: 10%;
+    margin-right: 40%;
+    
+    min-width: 200px;
   }
   
   
   
   .weatherButtons {
+    display: flex;
+    flex-direction: column;
     margin: auto;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 55%;
     height: 95%;
     width: 100%;
     text-align: center;
-    line-height: 10%;
+    line-height: 100%;
     padding: 5px;
     align-items: center;
     margin-top: 0%;
@@ -321,6 +363,22 @@ button::after {
 
 
 @media screen and (max-width: 320px) {
+  .weatherMain {
+    widows: 100%;
+  }
+  .whole {
+    display: flex;
+    width: 300px;
+  }
+  .weatherBlock {
+    width: 100%;
+  }
+  .centerButton {
+    width: 100%;
+    font-size: 70%;
+  }
+  
+  
   .weatherFSmall {
     
     display: block;

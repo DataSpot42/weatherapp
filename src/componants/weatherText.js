@@ -14,13 +14,13 @@ export function WeatherTemps(props) {
             <div> 
                 <h4>Weather Now:</h4>
                 {/* eslint-disable-next-line react/prop-types */}
-                <p >Max Temp: {Math.round(props.temp_max)} °C</p>
+                <div >Max Temp: {Math.round(props.temp_max)} °C</div>
                 {/* eslint-disable-next-line react/prop-types */}
-                <p>Min Temp: {Math.round(props.temp_min)} °C</p>
+                <div>Min Temp: {Math.round(props.temp_min)} °C</div>
                 {/* eslint-disable-next-line react/prop-types */}
-                <p>Feels Like: {Math.round(props.feels_like)} °C</p>
+                <div>Feels Like: {Math.round(props.feels_like)} °C</div>
                 {/* eslint-disable-next-line react/prop-types */}
-                <p>Avg Temp: {Math.round(props.temp)} °C</p>
+                <div>Avg Temp: {Math.round(props.temp)} °C</div>
             </div>
         </motion.div>
     )
@@ -72,9 +72,9 @@ export function WeatherDetail(props) {
             <div>
 
 {/* eslint-disable-next-line react/prop-types */}
-                <p>Weather: {(props.main)}</p>
+                <div>Weather: {(props.main)}</div>
                 {/* eslint-disable-next-line react/prop-types */}
-                <p>{(props.description)}</p>
+                <div>{(props.description)}</div>
                 <img src={icon} alt="Weather Icon" width="100" height="100" />
 
             </div>
@@ -92,8 +92,8 @@ export function WeatherWind(props) {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} >
             <div>
                 {/* eslint-disable-next-line react/prop-types */}
-                <p className="weatherNowWind">Wind Speed: {(Math.round(props.speed * 2.237))}mph</p>
-                <p className="weatherNowWind">Wind Direction: {windDir}</p>
+                <div className="weatherNowWind">Wind Speed: {(Math.round(props.speed * 2.237))}mph</div>
+                <div className="weatherNowWind">Wind Direction: {windDir}</div>
             </div>
         </motion.div>
     )
@@ -102,18 +102,17 @@ export function WeatherForcast(props) {
     const [showDayCast, setShowDayCast] = useState(false)
     const [timeFlag, setTimeFlag] = useState(0)
     const [chosenDay, setChosenDay] = useState(0)
-    /* const [dayCast, setDayCast] = useState("") */
+    
 
     const handlerWeatherDayCast = (timeStamp, dayStamp) => {
 
         setShowDayCast(false)
         setChosenDay(dayStamp)
         setTimeFlag(timeStamp)
-        /* setDayCast(dayStamp) */
-        /* setShowFiveDay(false) */
+       
         setShowDayCast(true)
         console.log(timeStamp,dayStamp)
-        /* Weather5day(forecast, forecastStamp) */
+        
     }
     const handlerNext12Cast = (forecast, timeZone) => {
         let next12 =[]
@@ -126,13 +125,7 @@ export function WeatherForcast(props) {
         
         setShowDayCast(true)
         
-        /* setShowDayCast(false)
-        setChosenDay(0)
-        setTimeFlag(timeStamp) */
-        /* setDayCast(dayStamp) */
-        /* setShowFiveDay(false) */
-        /* setShowDayCast(true) */
-        /* Weather5day(forecast, forecastStamp) */
+        
     }
     //eslint-disable-next-line react/prop-types
     let forecast = props.chosenForecast.list
@@ -178,7 +171,9 @@ export function WeatherForcast(props) {
         <>
             <div className="centerButton">
             <motion.button onClick={(e) => 
-                handlerNext12Cast(forecast,timeZone, e.target.value)} className='button2' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1) }}><p>Show Weather for next 12 hours</p></motion.button>
+                handlerNext12Cast(forecast,timeZone, e.target.value)} className='button2' initial={{ scale: 0 }} 
+                animate={{ scale: 1 }} transition={{ delay: (1) }}>
+                    <p>Show Weather for next 12 hours</p></motion.button>
             </div>
             <div className='forecastContainer'>
 
@@ -198,12 +193,13 @@ export function WeatherForcast(props) {
                         <div key={index}>
                             <><motion.button onClick={(e) => handlerWeatherDayCast(noonCast.dt,(day + index + 1), e.target.value)} className='weatherButtons' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
 
-                                <p>{(week[day + index+1])}</p>
-                                <p>Avg Temp: {Math.round(noonCast.main.temp)}°C</p>
-                                <p>Weather: {noonCast.weather[0].main}</p>
+                                <div>{(week[day + index+1])}</div>
+                                <div>Avg Temp: {Math.round(noonCast.main.temp)}°C</div>
+                                <div>Weather: {noonCast.weather[0].main}</div>
                                 <img src={`http://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50" />
-                                <p>Wind Speed: {Math.round(noonCast.wind.speed * 2.37)} mph</p>   {/* converts m/s to mph */}
-                                <p>Wind Direction {windDir}</p>
+                                <div>Wind Speed: {Math.round(noonCast.wind.speed * 2.37)} mph</div>   {/* converts m/s to mph */}
+                                <div>Wind Direction {windDir}</div>
+                                
                                 <smaller>Press for day forecast</smaller>
 
                             </motion.button></>

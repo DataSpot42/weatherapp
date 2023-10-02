@@ -48,27 +48,29 @@ const App = () => {
   }; */
   return (
     <div className="whole">
+      <div className="findWeather">
       <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} h2>Weather App</motion.h2>
       <PlaceComponent childToParent={childToParent} />     {/* box and button to get location */}
       <motion.button /* key={key} */ initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }}
         className="button" onClick={(e) => (handlerFindWeather(geo, e.target.value))}>Get Weather</motion.button>
+      </div>
       {isLoading ?        // conditional rendering, revealing blocks once data obtained
-        <>
+        <><div className="weatherMain">
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="weatherBlock" >
 
-            <p className="weatherNow"><WeatherTemps {...mainTemp} /></p>
-            <p className="weatherNow"><WeatherDetail {...chosenWeather} /></p>
-            <p className="weatherNow"><WeatherWind {...chosenWind} /></p>
-            <p className="weatherNow"><WeatherLocation {...chosenLocation}{...isLoading} /></p>    {/* current weather */}
+            <div className="weatherNow"><WeatherTemps {...mainTemp} /></div>
+            <div className="weatherNow"><WeatherDetail {...chosenWeather} /></div>
+            <div className="weatherNow"><WeatherWind {...chosenWind} /></div>
+            <div className="weatherNow"><WeatherLocation {...chosenLocation}{...isLoading} /></div>    {/* current weather */}
 
 
           </motion.div>
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
             <h2><WeatherForcast chosenForecast={chosenForecast} /></h2>       {/* forecast */}
           </motion.div>
-
+        </div>
         </>           
-        : <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} 
+        : <motion.h2 className="findWeather" initial={{ opacity: 0 }} animate={{ opacity: 1 }} 
         transition={{ ease: "linear", duration: .5, repeat: Infinity, repeatType: "reverse" }} 
         h2>Awaiting Input</motion.h2>}     {/* shown until data obtained */}
 
