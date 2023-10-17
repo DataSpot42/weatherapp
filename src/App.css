@@ -8,16 +8,28 @@ iframe {
 
 .whole {
   display: flex;
-
+  justify-content: center;
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
   flex-direction: column;
   align-items: center;
 }
+.findWeather {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+}
+.weatherSearch {
+  display: flex;
+  flex-direction: row;
+}
 .weatherMain {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: auto;
   place-items: center;
   place-self: center;
@@ -33,7 +45,6 @@ iframe {
   min-width: 200px;
   background: rgba(255, 255, 255, 0.21);
   border-radius: 16px;
-
   backdrop-filter: blur(6.5px);
   -webkit-backdrop-filter: blur(6.5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -60,6 +71,42 @@ button::after {
   transform: translate(-50%, -50%);
 
 }
+.buttonSml {
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 100%;
+  width: 10%;
+  min-width: 80px;
+  vertical-align: top;
+  background: rgba(255, 255, 255, 0.21);
+  border-radius: 16px;
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 5px;  
+  box-shadow: 15px 15px 15px rgb(52, 93, 130);
+}
+
+.buttonSml:hover,
+.buttonSml:focus {
+
+  transform: translateY(1px);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  /* border: 1px solid rgba(255, 255, 255, 0.3); */
+  background: rgba(159, 195, 214, 0.626);
+  box-shadow: 15px 15px 15px rgb(131, 195, 251);
+}
+
+.buttonSml::after {
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+  
+
 
 .weatherBlock {
 
@@ -279,12 +326,7 @@ button::after {
     display: block;
     margin: auto;
   }
-  .findWeather {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    align-items: center;
-  }
+  
   .weatherMain {
     display: block;
     margin: auto;

@@ -13,17 +13,16 @@ export function WeatherDayCastData({ dayCastData, forecastStamp, dayChosen, time
     let thisdaytoday = week[dayChosen]
     let tomorrow = week[dayChosen + 1]
     let yesterday = week[dayChosen - 1]
-    console.log(dayCastData, forecastStamp)
-    console.log(yesterday, today, tomorrow, dayChosen)
+    
     let dayCastArry = []
     let start = 0
     let noon = 0
     let startTime = 0
     if (dayChosen === 99) {
-        console.log("today button pressed")
+        
         // eslint-disable-next-line react/prop-types
         dayCastArry = dayCastData.slice(0, 4)
-        console.log(dayCastArry)
+        
         useEffect(() => {
             setDayCast(dayCastArry)  //stops component looping around setState
         }, [100]);
@@ -43,20 +42,20 @@ export function WeatherDayCastData({ dayCastData, forecastStamp, dayChosen, time
             if (dayCastArry[j].dt === forecastStamp) { noon = j }  //finding the forecast for noon on today 
         }
         for (let h = 3; h > noon; h--) {
-            console.log(h)
+            
             startTime = startTime + 3
         }
 
         console.log(`starttime is: ${startTime} noon is ${noon}`)
 
-        console.log(dayCast)
+        
         useEffect(() => {
             setDayCast(dayCastArry)  //stops component looping around setState
         }, [forecastStamp]);
     }
     return (
         <div className="WeatherDetailedContainer">
-            {console.log(dayCast)}
+            
 
             {dayCast.map((dayCast, index) => {
                 let windData = dayCast.wind.deg
@@ -74,7 +73,7 @@ export function WeatherDayCastData({ dayCastData, forecastStamp, dayChosen, time
                     } else { today = thisdaytoday }
                 }    // get correct day displayed
 
-                console.log(timeFind, timeNum, timeOffset, timeZoneData)
+                
 
                 return (
                     <div key={index}>

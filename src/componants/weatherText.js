@@ -8,7 +8,7 @@ import { WeatherDayCastData } from "./dayCast";
 
 
 export function WeatherTemps(props) {
-    console.log(props)
+    
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} >
             <div> 
@@ -28,15 +28,11 @@ export function WeatherTemps(props) {
 
 // eslint-disable-next-line react/prop-types
 export function WeatherLocation(props) {
-
-    const dateDate = new Date()
-    console.log(props)
-
+   
 // eslint-disable-next-line react/prop-types
-    let offset = (props.dt + props.timezone) * 1000
-    console.log(offset)
-    let curUTC = dateDate.toUTCString()
-    console.log(curUTC)
+    let offset = (props.dt + props.timezone) * 1000   
+    
+    
     const local = new Date(offset)
     let localUTC = local.toUTCString()
     let localUTCtoArray = localUTC.split(" ")
@@ -44,7 +40,7 @@ export function WeatherLocation(props) {
     localUTCtoArray.push("Local")
     let localText = localUTCtoArray.join(" ")
 
-    console.log(localText)
+    
 
     return (
         <div>
@@ -61,11 +57,11 @@ export function WeatherLocation(props) {
 
 // eslint-disable-next-line react/prop-types
 export function WeatherDetail(props) {
-    console.log(props)
+    
 
 // eslint-disable-next-line react/prop-types
     let icon = `http://openweathermap.org/img/w/${props.icon}.png`   //weather icon for forecast
-    console.log(icon)
+    
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} >
 
@@ -111,15 +107,16 @@ export function WeatherForcast(props) {
         setTimeFlag(timeStamp)
        
         setShowDayCast(true)
-        console.log(timeStamp,dayStamp)
+        
         
     }
+    //eslint-disable-next-line
     const handlerNext12Cast = (forecast, timeZone) => {
         let next12 =[]
         for (let k=0; k<4; k++) {
             next12.push(forecast[k])
         }
-        console.log(next12,timeZone)
+        
         setShowDayCast(false)
         setChosenDay(99)
         
@@ -155,15 +152,15 @@ export function WeatherForcast(props) {
             // eslint-disable-next-line react/prop-types
             if (noonfind[1] == `${offsetTextNoon}:00:00`) { noonCast.push(forecast[k]) }
             // eslint-disable-next-line react/prop-types
-            if (noonfind[1] == `${offsetTextNoon}:00:00` && k < 5) { console.log(k); console.log(noonfind); todayNoonCast = true }
+            if (noonfind[1] == `${offsetTextNoon}:00:00` && k < 5) { todayNoonCast = true }
         }
-        console.log(noonCast)
+        
         for (let m = 0; m <8; m++) {
             // eslint-disable-next-line react/prop-types
             midnightFind = forecast[m].dt_txt.split(" ")
             if (midnightFind[1] != `${offsetTextMidnight}:00:00`) { midnightCast.push(forecast[m]) }
         }
-        console.log(midnightCast)
+        
     }
 
 
@@ -182,10 +179,10 @@ export function WeatherForcast(props) {
                     let windData = noonCast.wind.deg
                     let windDir = WindCalc(windData)   // calls WindCalc componant to get wind direction
                     const d = new Date(forcOffset);
-                    console.log(d)
+                    
                     const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
                     let day = d.getDay();
-                    console.log(noonCast)
+                    
                     /* let today = week[day]  */  // converts day data into weekday text
                     if (todayNoonCast === true) { day-- }   // if it is before noon locally then today's weather at noon will be shown
 

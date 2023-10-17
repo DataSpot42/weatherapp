@@ -38,6 +38,7 @@ export default function PlaceComponent({childToParent}) {
                     width: `240px`,
                     height: `32px`,
                     padding: `0 12px`,
+                    margin: '10px 0px 2px 10px',
                     borderRadius: `3px`,
                     boxShadow: `5 5px 6px rgba(0, 0, 0, 0.3)`,
                     fontSize: `18px`,

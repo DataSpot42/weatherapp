@@ -3,6 +3,8 @@ import { WeatherLocation, WeatherTemps, WeatherDetail, WeatherWind, WeatherForca
 import PlaceComponent from "./componants/locationsearch";
 import { motion } from "framer-motion";
 import './App.css'
+import locsymb from "../src/componants/images/locationsymb.png"
+
 
 let isLoading = false   // setting to hide weather blocks until data obtained
 const App = () => {
@@ -41,18 +43,39 @@ const App = () => {
     console.log(mainTemp)
     isLoading = true   //revealing weather blocks now data obtained
   }
+  const handlerNearbyWeather = async() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      console.log("Geolocation not supported");
+    }
+    function success(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      
+      
+      let geoLocation = [latitude, longitude]
+      setGeo(geoLocation)
+      handlerFindWeather(geoLocation)
+    }
+    function error() {
+      console.log("Unable to retrieve your location");
+  }
+  
+  }
 
- /*  const handleSelectedlocation = (geo, e) => {
-    e.preventDefault()
-    handlerFindWeather(geo)         // stopping constant polling of data
-  }; */
   return (
     <div className="whole">
-      <div className="findWeather">
+      <div className="findWeather">        
       <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} h2>Weather App</motion.h2>
+      <div className="weatherSearch">
       <PlaceComponent childToParent={childToParent} />     {/* box and button to get location */}
       <motion.button /* key={key} */ initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }}
-        className="button" onClick={(e) => (handlerFindWeather(geo, e.target.value))}>Get Weather</motion.button>
+        className="button buttonSml" onClick={(e) => (handlerFindWeather(geo, e.target.value))}>Select</motion.button>
+      </div>
+      <motion.button /* key={key} */ initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }}
+        className="button" onClick={(e) => (handlerNearbyWeather(geo, e.target.value))}>{<img src={locsymb} alt="Icon" width="15" height="15" />}  Current Location</motion.button>
+      
       </div>
       {isLoading ?        // conditional rendering, revealing blocks once data obtained
         <><div className="weatherMain">
@@ -71,8 +94,7 @@ const App = () => {
         </div>
         </>           
         : <motion.h2 className="findWeather" initial={{ opacity: 0 }} animate={{ opacity: 1 }} 
-        transition={{ ease: "linear", duration: .5, repeat: Infinity, repeatType: "reverse" }} 
-        h2>Awaiting Input</motion.h2>}     {/* shown until data obtained */}
+        transition={{ ease: "linear", duration: .5, repeat: Infinity, repeatType: "reverse" }}>Awaiting Input</motion.h2>}     {/* shown until data obtained */}
 
     </div>
   )
