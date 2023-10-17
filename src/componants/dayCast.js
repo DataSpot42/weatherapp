@@ -83,7 +83,7 @@ export function WeatherDayCastData({ dayCastData, forecastStamp, dayChosen, time
                             <p>{today} {timeOffset.toString().padStart(2, '0')}:00</p>
                             <p>Avg Temp: {Math.round(dayCast.main.temp)}°C</p>
                             <p>Weather: {dayCast.weather[0].main}</p>
-                            <img src={`http://openweathermap.org/img/w/${dayCast.weather[0].icon}.png`}
+                            <img src={`https://openweathermap.org/img/w/${dayCast.weather[0].icon}.png`}
                                 alt="Weather Icon" width="50" height="50" />
                             <p>Wind Speed: {Math.round(dayCast.wind.speed * 2.37)} mph</p>   {/* converts m/s to mph */}
                             <p>Wind Direction {windDir}</p>

@@ -193,7 +193,7 @@ export function WeatherForcast(props) {
                                 <div>{(week[day + index+1])}</div>
                                 <div>Avg Temp: {Math.round(noonCast.main.temp)}°C</div>
                                 <div>Weather: {noonCast.weather[0].main}</div>
-                                <img src={`http://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50" />
+                                <img src={`https://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50" />
                                 <div>Wind Speed: {Math.round(noonCast.wind.speed * 2.37)} mph</div>   {/* converts m/s to mph */}
                                 <div>Wind Direction {windDir}</div>
                                 
