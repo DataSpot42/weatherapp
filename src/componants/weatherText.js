@@ -60,7 +60,7 @@ export function WeatherDetail(props) {
     
 
 // eslint-disable-next-line react/prop-types
-    let icon = `http://openweathermap.org/img/w/${props.icon}.png`   //weather icon for forecast
+    let icon = `https://openweathermap.org/img/w/${props.icon}.png`   //weather icon for forecast
     
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} >
