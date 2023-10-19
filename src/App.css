@@ -36,6 +36,7 @@ iframe {
   width: 55%;
   align-items: center;
 }
+
 .popupClass {
   display: flex;
   flex-direction: row;
@@ -137,7 +138,6 @@ button::after {
     ". .";
   gap: 2px;
 
-  /* overflow: scroll; */
   font-size: 1vh;
 
   padding-top: 0.1%;
@@ -175,7 +175,7 @@ button::after {
 
 .weatherFSmall {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 45%;
+  font-size: 65%;
   height: 90%;
   width: 95%;
   text-align: center;
