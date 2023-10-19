@@ -69,12 +69,12 @@ export function WeatherTodayCastData({ dayCastData, forecastStamp, dayChosen, ti
         <AnimatePresence> 
         <motion.div layout
                     variants={{
-                        hidden: (i) => ({
+                        hidden: () => ({
                             scale: 0,
                             y:100,
                             x: -1000
                         }),
-                        visable: (i) => ({
+                        visable: () => ({
                             scale: 1,
                             x: 0,
                             y: 0,
