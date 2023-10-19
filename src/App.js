@@ -67,7 +67,7 @@ const App = () => {
   return (
     <div className="whole">
       <div className="findWeather">        
-      <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} h2>Weather App</motion.h2>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}> <h2>Weather App</h2></motion.div>
       <div className="weatherSearch">
       <PlaceComponent childToParent={childToParent} />     {/* box and button to get location */}
       <motion.button /* key={key} */ initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }}

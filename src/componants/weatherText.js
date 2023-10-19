@@ -4,6 +4,7 @@ import { WindCalc } from "./windCalc";
 import '../App.css'
 
 import { WeatherDayCastData } from "./dayCast";
+import { WeatherTodayCastData } from "./todayCast";
 
 
 
@@ -167,10 +168,8 @@ export function WeatherForcast(props) {
     return (
         <>
             <div className="centerButton">
-            <motion.button onClick={(e) => 
-                handlerNext12Cast(forecast,timeZone, e.target.value)} className='button2' initial={{ scale: 0 }} 
-                animate={{ scale: 1 }} transition={{ delay: (1) }}>
-                    <p>Show Weather for next 12 hours</p></motion.button>
+            
+                    <WeatherTodayCastData dayCastData={forecast} forecastStamp={timeFlag} dayChosen={99} timeZoneData={timeZoneOffset}  />
             </div>
             <div className='forecastContainer'>
 
@@ -188,7 +187,8 @@ export function WeatherForcast(props) {
 
                     return (
                         <div key={index}>
-                            <><motion.button onClick={(e) => handlerWeatherDayCast(noonCast.dt,(day + index + 1), e.target.value)} className='weatherButtons' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
+                            <><motion.button onClick={(e) => handlerWeatherDayCast(noonCast.dt,(day + index + 1), e.target.value)} 
+                            className='weatherButtons' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
 
                                 <div>{(week[day + index+1])}</div>
                                 <div>Avg Temp: {Math.round(noonCast.main.temp)}°C</div>
@@ -208,10 +208,10 @@ export function WeatherForcast(props) {
              <div>  
                 <h3></h3>
                 {showDayCast && <WeatherDayCastData dayCastData={forecast} forecastStamp={timeFlag} dayChosen={chosenDay} timeZoneData={timeZoneOffset}  />}
-            </div>              {/* up to 8 forecasts for the day selected */}
-
-
-        </>
+               
+               </div>              {/* up to 8 forecasts for the day selected */}
+   
+                </>
     )
 }
 
