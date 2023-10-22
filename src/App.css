@@ -178,7 +178,7 @@ button::after {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 75%;
   height: 90%;
-  width: 95%;
+  width: 100%;
   font-weight: 900;
   text-align: center;
   line-height: 10%;
@@ -370,7 +370,7 @@ button::after {
     
     display: block;    
     line-height: 0%;    
-    font-size: 30%;
+    font-size: 42%;
     
   }
   .centerButton {
