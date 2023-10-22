@@ -175,9 +175,10 @@ button::after {
 
 .weatherFSmall {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 65%;
+  font-size: 75%;
   height: 90%;
   width: 95%;
+  font-weight: 900;
   text-align: center;
   line-height: 10%;
   padding: 5px;
