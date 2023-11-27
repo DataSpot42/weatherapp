@@ -62,7 +62,7 @@ export function WeatherTodayCastData({ dayCastData, forecastStamp, dayChosen, ti
     return (
         <Popup
         ref={ref}
-        position="top center" closeOnDocumentClick
+        position="below" closeOnDocumentClick
         trigger={          
             <button type="button" className="button2">Show Next 12 Hours</button>}>
         <div className="WeatherDetailedContainer">
@@ -120,12 +120,18 @@ export function WeatherTodayCastData({ dayCastData, forecastStamp, dayChosen, ti
 
 
                             <p>{today} {timeOffset.toString().padStart(2, '0')}:00</p>
+                            <div className="weatherDayGrid">
+                            <div>
                             <p>Avg Temp: {Math.round(dayCast.main.temp)}°C</p>
-                            <p>Weather: {dayCast.weather[0].main}</p>
-                            <img src={`https://openweathermap.org/img/w/${dayCast.weather[0].icon}.png`}
-                                alt="Weather Icon" width="50" height="50" />
+                            <p>Weather: {dayCast.weather[0].main}</p></div>
                             <p>Wind Speed: {Math.round(dayCast.wind.speed * 2.37)} mph</p>   {/* converts m/s to mph */}
                             <p>Wind Direction {windDir}</p>
+                            <div>
+                            <img src={`https://openweathermap.org/img/w/${dayCast.weather[0].icon}.png`}
+                                alt="Weather Icon" width="50" height="50" />
+                            
+                            </div>
+                            </div>
                         </motion.div>
 
                     </div>

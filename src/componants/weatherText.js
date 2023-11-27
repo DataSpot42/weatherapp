@@ -100,6 +100,7 @@ export function WeatherForcast(props) {
     const [timeFlag, setTimeFlag] = useState(0)
     const [chosenDay, setChosenDay] = useState(0)
     
+    
 
     const handlerWeatherDayCast = (timeStamp, dayStamp) => {
 
@@ -189,27 +190,36 @@ export function WeatherForcast(props) {
                         <div key={index}>
                             <><motion.button onClick={(e) => handlerWeatherDayCast(noonCast.dt,(day + index + 1), e.target.value)} 
                             className='weatherButtons' initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: (1.3 + (index / 2)) }} key={index}>
-
+                                
                                 <div>{(week[day + index+1])}</div>
+                                <div className="weatherDayGrid">
+                                <div>    
                                 <div>Avg Temp: {Math.round(noonCast.main.temp)}°C</div>
-                                <div>Weather: {noonCast.weather[0].main}</div>
-                                <img src={`https://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="50" height="50" />
+                                
                                 <div>Wind Speed: {Math.round(noonCast.wind.speed * 2.37)} mph</div>   {/* converts m/s to mph */}
                                 <div>Wind Direction {windDir}</div>
+                                </div>
+                                <div><div>Weather: {noonCast.weather[0].main}</div>
+                                <img src={`https://openweathermap.org/img/w/${noonCast.weather[0].icon}.png`} alt="Weather Icon" width="90" height="90" />
+                                </div>
+                                </div>
+                                <div>Press for day forecast</div>
                                 
-                                <smaller>Press for day forecast</smaller>
-
                             </motion.button></>
+                            <div>  
+                
+                {((day+index+1) === chosenDay && <div>
+                {showDayCast && <WeatherDayCastData dayCastData={forecast} forecastStamp={timeFlag} dayChosen={chosenDay} timeZoneData={timeZoneOffset}  />}
+                </div>)}
+               </div>
 
                         </div>
+                        
                     )
+                    
                 })}
              </div> 
-             <div>  
-                <h3></h3>
-                {showDayCast && <WeatherDayCastData dayCastData={forecast} forecastStamp={timeFlag} dayChosen={chosenDay} timeZoneData={timeZoneOffset}  />}
-               
-               </div>              {/* up to 8 forecasts for the day selected */}
+                           
    
                 </>
     )
