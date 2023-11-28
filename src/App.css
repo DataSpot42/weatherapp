@@ -374,13 +374,6 @@ button::after {
 
   }  
 
-  .weatherFSmall {
-    
-    display: block;    
-    line-height: 0%;    
-    font-size: 42%;
-    
-  }
   .centerButton {
     display: flex;
     justify-content: center;
@@ -454,7 +447,7 @@ button::after {
   .weatherFSmall {
     
     display: block;
-    font-size: 30%;
+    font-size: 80%;
     line-height: 80%;
     height: 100%;    
     width: 100%;
