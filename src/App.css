@@ -444,13 +444,6 @@ button::after {
   }
   
   
-  .weatherFSmall {
-    
-    display: block;
-    font-size: 80%;
-    line-height: 80%;
-    height: 100%;    
-    width: 100%;
-  }
+
 }  
   
