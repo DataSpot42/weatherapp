@@ -186,13 +186,14 @@ button::after {
 .weatherFSmall {
   display: flex;
   flex-direction: column;
-  font-size: 80%;
-  font-weight: 500;
+  font-size: 60%;
+  
   height: 90%;
   width: 100%;
-  
+  max-width: 500px;
+  line-height: 70%;
   text-align: center;
-  
+  font-weight: 200;
   padding: 2px;
   align-items: center;
   margin-top: 0%;
@@ -279,7 +280,8 @@ button::after {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 80%;
   height: 95%;
-  min-width: 80vw;
+  min-width: 200px;
+  max-width: 500px;
   width: 100%;
   text-align: center;
   line-height: 100%;
