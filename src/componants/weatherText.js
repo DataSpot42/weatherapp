@@ -48,7 +48,7 @@ export function WeatherLocation(props) {
             <div>
                 
 {/* eslint-disable-next-line react/prop-types */}
-                <p>{(props.name)}</p>
+                <div className="weatherNowWind">{(props.name)}</div>
 
                 <p className="smallText">{(localText)}</p>
             </div>

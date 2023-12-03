@@ -26,13 +26,18 @@ iframe {
   margin: auto;
   display: grid;
 grid-template-columns: repeat(2, 1fr);
-grid-template-rows: repeat(2, 1fr);
+grid-template-rows: repeat(1, 1fr);
 grid-column-gap: 5px;
 grid-row-gap: 5px;
   padding: 5px;
   text-align: left;
   
   ;
+}
+.weatherNowHL {
+  display: block;
+  margin: auto;
+  text-align: center;
 }
 
 .popupClass {
@@ -140,11 +145,11 @@ button::after {
 
 .weatherNow {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 130%;
-  line-height: 100%;
+  font-size: 110%;
+  line-height: 90%;
   margin-top: 0%;
   margin-bottom: 0%;
-  padding: 5px;
+  padding: 1px 5px;
 }
 .weatherNowWind {
   font-size: 90%;
@@ -155,6 +160,8 @@ button::after {
 }
 .smallText {
   font-size:0.5em;
+  padding: 0px;
+  margin: 0px;
 }
 
 .weatherDayGrid {
