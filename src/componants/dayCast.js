@@ -54,7 +54,7 @@ export function WeatherDayCastData({ dayCastData, forecastStamp, dayChosen, time
         }, [forecastStamp]);
     }
     return (
-        <div className="WeatherDetailedContainer">
+        <div>
             
 
             {dayCast.map((dayCast, index) => {
@@ -82,11 +82,11 @@ export function WeatherDayCastData({ dayCastData, forecastStamp, dayChosen, time
 
                             <p>{today} {timeOffset.toString().padStart(2, '0')}:00</p>
                             <div className="weatherDayGrid">
-                                <div>
+                                <div className="dayWeatherInfo">
                             <p>Avg Temp: {Math.round(dayCast.main.temp)}°C</p>
                             <p>Wind Speed: {Math.round(dayCast.wind.speed * 2.37)} mph</p>   {/* converts m/s to mph */}
-                            <p>Wind Direction:</p>
-                            <p> {windDir}</p>
+                            <p>Wind Direction: {windDir}</p>
+                            
                             </div>
                             <div>
                             <p>Weather: {dayCast.weather[0].main}</p>

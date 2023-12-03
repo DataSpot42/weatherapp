@@ -65,7 +65,7 @@ export function WeatherTodayCastData({ dayCastData, forecastStamp, dayChosen, ti
         position="below" closeOnDocumentClick
         trigger={          
             <button type="button" className="button2">Show Next 12 Hours</button>}>
-        <div className="WeatherDetailedContainer">
+        <div>
         <AnimatePresence> 
         <motion.div layout
                     variants={{
@@ -93,7 +93,7 @@ export function WeatherTodayCastData({ dayCastData, forecastStamp, dayChosen, ti
                     style={{
                         position: isPresent ? 'hidden' : 'visable '
                     }} 
-                    className="popupClass" >
+                    >
                     
                   
             {dayCast.map((dayCast, index) => {

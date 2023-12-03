@@ -78,22 +78,23 @@ const App = () => {
       
       </div>
       {isLoading ?        // conditional rendering, revealing blocks once data obtained
-        <><div className="weatherMain">
+        <><div>
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="weatherBlock" >
-
+          <div className="weatherNowHL">Weather Now</div>
+          <div className="weatherMain">
             <div className="weatherNow"><WeatherTemps {...mainTemp} /></div>
             <div className="weatherNow"><WeatherDetail {...chosenWeather} /></div>
             <div className="weatherNow"><WeatherWind {...chosenWind} /></div>
             <div className="weatherNow"><WeatherLocation {...chosenLocation}{...isLoading} /></div>    {/* current weather */}
-
-
+            
+            </div>
           </motion.div>
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-            <h2><WeatherForcast chosenForecast={chosenForecast} /></h2>       {/* forecast */}
+            <div><WeatherForcast chosenForecast={chosenForecast} /></div>       {/* forecast */}
           </motion.div>
         </div>
         </>           
-        : <motion.h2 className="findWeather" initial={{ opacity: 0 }} animate={{ opacity: 1 }} 
+        : <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} 
         transition={{ ease: "linear", duration: .5, repeat: Infinity, repeatType: "reverse" }}>Awaiting Input</motion.h2>}     {/* shown until data obtained */}
 
     </div>

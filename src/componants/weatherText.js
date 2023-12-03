@@ -13,7 +13,7 @@ export function WeatherTemps(props) {
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} >
             <div> 
-                <h4>Weather Now:</h4>
+                
                 {/* eslint-disable-next-line react/prop-types */}
                 <div >Max Temp: {Math.round(props.temp_max)} °C</div>
                 {/* eslint-disable-next-line react/prop-types */}
