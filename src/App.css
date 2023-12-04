@@ -179,7 +179,7 @@ grid-template-columns: 1fr;
 grid-template-rows: 1fr;
 grid-column-gap: 5px;
 grid-row-gap: 5px;
-  font-size: 60%; 
+  font-size: 90%; 
   min-width: 250px;
   line-height: 50%;
   text-align: center;

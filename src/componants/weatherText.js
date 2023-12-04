@@ -104,11 +104,12 @@ export function WeatherForcast(props) {
 
     const handlerWeatherDayCast = (timeStamp, dayStamp) => {
 
-        setShowDayCast(false)
+        setShowDayCast(true)
         setChosenDay(dayStamp)
         setTimeFlag(timeStamp)
-       
-        setShowDayCast(true)
+       console.log(showDayCast+" is it true or false?")
+        if (showDayCast===true && chosenDay===dayStamp) {setShowDayCast(false)}
+        // setting up a toggle for button if same day is pressed twice
         
         
     }
